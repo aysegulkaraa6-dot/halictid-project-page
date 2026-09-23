@@ -69,8 +69,11 @@ of the project asks whether that developmental switch left traces in the genome.
 
 One account says caste systems begin as plasticity. A solitary ancestor already
 adjusts development to conditions; selection then makes one induced outcome more
-reliable until it becomes fixed (West-Eberhard 2003; Jones and Robinson 2018). A
-caste, on this view, is an old conditional response that stopped being optional.
+reliable (West-Eberhard 2003; Jones and Robinson 2018). What evolves is the
+mapping from cue to outcome, not the outcomes themselves. Caste in
+*L. malachurum* is still environmentally set, so a larva is not genetically a
+queen. What became obligate is that every colony produces both castes, every
+year.
 
 **Canalization** is that increase in reliability: development reaching the same
 outcome despite variation in genes or environment. If caste determination became
@@ -85,8 +88,23 @@ than the background.
 underlying it should be too, so caste genes should vary less between individuals
 of one caste than other genes do.
 
-Both are inferences from the idea, not consequences of it. How much weight they
-bear is the subject of this page.
+The project proposal reaches the redundancy prediction by a different route.
+There, extra elements are a hiding place, letting regulatory variation accumulate
+unexpressed until conditions expose it and selection can act (genetic
+accommodation). Same direction, different claim: one is about how caste
+regulation was assembled, the other about how reliably it now fires. Test 1 does
+not separate them.
+
+**The assumption both routes need.** Neither is a claim about queens or workers
+as such, so the tests need a way to point at caste regulation using adult data.
+Caste-biased expression is that handle: genes differentially expressed between
+queens and workers stand in for the genes whose regulation changed with caste.
+That is an assumption rather than a definition, and it is the loosest link in the
+chain. It is taken up in
+[what the tests could and could not measure](#what-the-tests-could-and-could-not-measure).
+
+Both traces are inferences from the idea, not consequences of it. How much weight
+they bear is the subject of this page.
 
 ## The system
 
@@ -198,6 +216,14 @@ A pattern appearing there too is not caste-specific.
 > so what was measured is how tightly the outcome is held. A canalized switch
 > predicts fewer intermediates rather than lower variance, visible only in
 > larvae.
+>
+> Then the gene-set argument, which is the larger of the two: caste-biased genes
+> are the difference between two finished outcomes, not the machinery that chose
+> between them. A gene can be queen-biased purely as a consequence of ovary
+> activation without its regulation having changed at the origin of caste. Both
+> tests inherit this proxy and neither can check it. Larval data during the
+> commitment window is what replaces the proxy with genes that actually respond
+> to the cue.
 >
 > **Pending (asked Ana, 23 Sep):** whether larvae are being collected now, and
 > whether larval RNA-seq exists from phase 1. If phase-1 larval data exists the
