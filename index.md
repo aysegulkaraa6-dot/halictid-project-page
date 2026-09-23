@@ -4,20 +4,210 @@
 # Canalized plasticity in caste evolution
 
 *Companion page to the GEvol 2026 poster. Ayşegül Kara, Evolutionary Biology,
-LMU München; PI Sonja Grath.*
+LMU München. PI: Sonja Grath. Last updated 23 September 2026.*
 
-## The question
+> **Lead paragraph, written last.** Two or three sentences: what the project
+> asks, what the two tests found, where it stands.
 
-## Test 1 — regulatory redundancy (SCRMshaw)
+**Contents**
 
-## Test 2 — expression canalization (dispersion)
+[Project scope](#project-scope) ·
+[Background](#background) ·
+[The system](#the-system) ·
+[What was pre-specified](#what-was-pre-specified-and-when) ·
+[Test 1](#test-1-regulatory-redundancy) ·
+[Test 2](#test-2-expression-canalization) ·
+[Limits](#what-the-tests-could-and-could-not-measure) ·
+[Next](#where-this-goes-next) ·
+[Questions](#questions-for-the-committee) ·
+[Methods](#methods-in-full) ·
+[References](#references)
+
+## Project scope
+
+This is a DFG-funded project on the regulatory basis of eusociality in halictid
+bees. Halictids are useful because the group contains eusocial, solitary and
+socially variable species in close relation, so the same transition can be
+compared across lineages. The project runs in three work packages: predicting
+regulatory elements across halictid genomes, quantifying selection and testing
+for convergence across independent origins, and asking whether regulatory
+switches are novel or co-opted from existing developmental pathways.
+
+**Everything below concerns one genome only.** *Lasioglossum malachurum* was
+the case study used to build and validate the prediction pipeline before it is
+applied across the other halictid genomes. The results reported here are
+therefore properties of this species and this dataset, not statements about
+halictids in general. Where the work bears on the wider comparison it is
+flagged as such.
+
+> Check: is the three-work-package framing how you want this described to the
+> committee, and should the other genomes be named here?
+
+## Background
+
+Queens and workers in *L. malachurum* share a genome but develop into different
+things, and which one a larva becomes is decided during development. This leg
+of the project asks whether that developmental switch left traces in the genome.
+
+One account says caste systems begin as plasticity. A solitary ancestor already
+adjusts development to conditions; selection then makes one induced outcome more
+reliable until it becomes fixed (West-Eberhard 2003; Jones and Robinson 2018). A
+caste, on this view, is an old conditional response that stopped being optional.
+
+**Canalization** is that increase in reliability: development reaching the same
+outcome despite variation in genes or environment. If caste determination became
+canalized, two traces are expected.
+
+**Regulatory redundancy.** A switch that must fire reliably should be buffered,
+for instance by controlling its genes through several regulatory elements rather
+than one. Caste loci should then carry more redundant regulatory architecture
+than the background.
+
+**Tighter expression control.** If the outcome is reliable, the expression
+underlying it should be too, so caste genes should vary less between individuals
+of one caste than other genes do.
+
+Both are inferences from the idea, not consequences of it. How much weight they
+bear is the subject of this page.
+
+## The system
+
+*L. malachurum* is a primitively eusocial sweat bee with an annual cycle, so all
+three adult female roles can be sampled in one season from one population.
+
+- **Castes:** foundress, queen, worker.
+- **Tissues:** brain and fat body, dissected separately.
+- **Samples:** 44 RNA-seq libraries. Queen n = 5 per tissue, worker n = 9,
+  foundress n = 8.
+- **Caste-biased genes:** differentially expressed between castes. Primary
+  contrast queen versus worker, DESeq2, padj < 0.05 and |log2FC| >= 1.
+- **Predictions:** regulatory elements predicted from the *L. malachurum*
+  assembly, scored against *Drosophila* training data. Section 5.1 covers what
+  that licenses.
+
+**One confound.** Foundress samples were collected April 2024, queen and worker
+July 2023. Caste and season are fully confounded for foundress, so any foundress
+result is caste plus batch. Queen versus worker is unaffected, which is why it
+is the primary contrast.
+
+**One control.** Brain versus fat body identity is tested the same way as caste.
+A pattern appearing there too is not caste-specific.
+
+## What was pre-specified, and when
+
+> Both predictions, including effect direction, written down before analysis;
+> say where that is recorded. Mark which later analyses were follow-ups rather
+> than pre-registered tests.
+
+## Test 1. Regulatory redundancy
+
+### 5.1 What SCRMshaw predicts, and what it does not
+
+> What it is, the three scoring methods and what each computes, why all three
+> are run. Then the limit: enhancer-like sequence, not demonstrated function.
+
+### 5.2 From windows to predictions
+
+> The chain with parameters: 500 bp windows at 25 offsets, three scores,
+> nfrac <= 0.05, per-instance elbow, 10 bp signal, MACS2 stage 1, stage-2 elbow
+> on amplitudes, final peaks. Include the two failures that shaped it: IMM's
+> degenerate elbows under N-masking, and the zero-fill bug.
+
+### 5.3 From predictions to redundant loci
+
+> The permutation test: the question it answers, why raw counts are not
+> interpretable, the shuffling constraint, 1000 replicates, empirical p, BH
+> within training set. Defines the independent variable.
+
+### 5.4 From loci to genes
+
+> Testable locus and why the filter exists. Binary and count redundancy. Why
+> "at least one significant training set" is the right threshold and where the
+> multiplicity actually lives. Gene as unit of analysis. Different gene
+> universes per method.
+
+### 5.5 Result on 36 training sets
+
+> The null with odds ratios, and the power audit. State what it rules out and
+> to what effect size.
+
+### 5.6 Result on 74 and 86 training sets
+
+> Fat body unchanged, brain depleted under IMM and merged. Numbers, direction,
+> caveats, and the two earlier findings pointing the same way. Hold until the
+> follow-up lands.
+
+### 5.7 What the method disagreement means
+
+> Peak profiles, base-pair Jaccard, the IMM/HexMCD asymmetry, what merged is.
+> Hold until the heterogeneity test lands.
+
+## Test 2. Expression canalization
+
+### 6.1 Prediction and design
+
+> The directional prediction, six caste by tissue groups, how dispersion is
+> estimated.
+
+### 6.2 Result
+
+> The reversal, in all six groups.
+
+### 6.3 Robustness
+
+> Mean-expression correction and the caste-matched fix. The objection each
+> answers.
+
+### 6.4 The brain versus fat body control
+
+> The same pattern appears in the tissue comparison, so it is not
+> caste-specific.
+
+### 6.5 What the literature already said
+
+> The prediction runs against published work. Summarise the findings, not just
+> the citations: expression variance is not low where function is high, and
+> differentially expressed or condition-responsive genes are systematically
+> noisier (Sigalova et al. 2020; Lehner 2010, and whatever else the literature
+> pass turns up). This section is why the Test 2 result is unsurprising in
+> hindsight, and it belongs before rather than after the result is discussed.
 
 ## What the tests could and could not measure
 
+> Bounded claims, not apologies. What is ruled out and to what effect size.
+> What could not be measured: functional redundancy, an uncanalized baseline.
+> Then the stage argument: canalization acts at the switch, adults are past it,
+> so what was measured is how tightly the outcome is held. A canalized switch
+> predicts fewer intermediates rather than lower variance, visible only in
+> larvae.
+>
+> **Pending (asked Ana, 23 Sep):** whether larvae are being collected now, and
+> whether larval RNA-seq exists from phase 1. If phase-1 larval data exists the
+> stage limitation is addressable with data in hand rather than a future plan,
+> which changes this section and the next one substantially.
+
 ## Where this goes next
 
-## Data, code and methods
+> The three open questions plus the analyses now running. For each: what it
+> would establish, what data it needs, what would count as a negative result.
 
-## Open questions
+## Questions for the committee
 
-## Contact
+> Written as questions, not a summary.
+
+## Methods in full
+
+> Parameters, thresholds, software versions, and the universe definitions
+> (retained36, all48, retained74, all86, new38) with what each is for.
+
+## Data and code
+
+> Where reports, tables and scripts live. What is available on request.
+
+## References
+
+> Everything cited anywhere on this page and on the poster, in one list.
+> Currently expected: West-Eberhard 2003; Jones and Robinson 2018;
+> Kantorovitz et al. 2009; Kazemian et al. 2011; Asma et al. 2024;
+> Rohlfs and Nielsen 2015; Sigalova et al. 2020; Lehner 2010;
+> Masel et al. 2007.
