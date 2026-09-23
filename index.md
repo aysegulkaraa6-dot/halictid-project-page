@@ -26,22 +26,40 @@ LMU München. PI: Sonja Grath. Last updated 23 September 2026.*
 ## Project scope
 
 This is a DFG-funded project on the regulatory basis of eusociality in halictid
-bees. Halictids are useful because the group contains eusocial, solitary and
-socially variable species in close relation, so the same transition can be
-compared across lineages. The project runs in three work packages: predicting
-regulatory elements across halictid genomes, quantifying selection and testing
-for convergence across independent origins, and asking whether regulatory
-switches are novel or co-opted from existing developmental pathways.
+bees, running in three work packages: predicting regulatory elements across
+halictid genomes, quantifying selection and testing for convergence across
+independent origins, and asking whether regulatory switches are novel or
+co-opted from existing developmental pathways.
 
-**Everything below concerns one genome only.** *Lasioglossum malachurum* was
-the case study used to build and validate the prediction pipeline before it is
-applied across the other halictid genomes. The results reported here are
-therefore properties of this species and this dataset, not statements about
-halictids in general. Where the work bears on the wider comparison it is
-flagged as such.
+**Why halictids.** Eusociality is not fixed in this group. It has been gained
+and lost repeatedly, and species at every stage are alive and collectable
+today, which is unusual. The phylogeny on the poster shows five of them:
 
-> Check: is the three-work-package framing how you want this described to the
-> committee, and should the other genomes be named here?
+| Species | Social state |
+|---|---|
+| *D. dentriventris* | solitary, ancestrally so |
+| *H. quadricinctus* | solitary, secondarily |
+| *H. rubicundus* | socially polymorphic |
+| *L. marginatum* | eusocial |
+| *L. malachurum* | eusocial |
+
+Eusociality is gained once on the branch leading to the eusocial clade, and
+lost again in *H. quadricinctus*. Two points follow. "Solitary" in this group
+usually means derived rather than ancestral, so a solitary halictid is not a
+proxy for the ancestral state. And because polymorphic and reverted lineages
+still exist, a comparison across them is possible in principle rather than
+having to be reconstructed.
+
+**Everything below concerns one genome only.** *L. malachurum* is the case
+study used to build and validate the prediction pipeline before it is applied
+across the other genomes. Results here are properties of this species and this
+dataset, not claims about halictids in general. Where the work bears on the
+wider comparison it is flagged as such.
+
+> **Fill in:** the genome set. The repository only evidences *L. malachurum*
+> and *Nomia melanderi*, so list the rest yourself rather than trusting me.
+> Also expand the abbreviated species names above, since the poster carried
+> only the initials and I am not going to guess the genera.
 
 ## Background
 
