@@ -63,21 +63,32 @@ wider comparison it is flagged as such.
 
 ## Background
 
-Queens and workers in *L. malachurum* share a genome but develop into different
-things, and which one a larva becomes is decided during development. This leg
-of the project asks whether that developmental switch left traces in the genome.
+*L. malachurum* is obligately eusocial. Every colony produces workers, and then
+queens, every year. That is the starting point of this work rather than something
+it tests. The question is what regulatory architecture sits behind a caste system
+like that, and whether it carries any signature of how the system came about.
 
 One account says caste systems begin as plasticity. A solitary ancestor already
-adjusts development to conditions; selection then makes one induced outcome more
-reliable (West-Eberhard 2003; Jones and Robinson 2018). What evolves is the
-mapping from cue to outcome, not the outcomes themselves. Caste in
-*L. malachurum* is still environmentally set, so a larva is not genetically a
-queen. What became obligate is that every colony produces both castes, every
-year.
+adjusts development to conditions, and in halictids the plausible raw material is
+seasonal and nutritional polyphenism: females provisioned poorly or late in the
+season emerge smaller, with less developed ovaries. Something like both phenotypes
+is producible before eusociality exists. Selection then acts on the shape of that
+conditional response, making the outcome more reliably predicted by the cue
+(West-Eberhard 2003; Jones and Robinson 2018). Note what this does not claim.
+Caste here is still environmentally set, so a larva is not genetically a queen.
+What is proposed to have changed is how cleanly the environment's decision gets
+executed.
 
-**Canalization** is that increase in reliability: development reaching the same
-outcome despite variation in genes or environment. If caste determination became
-canalized, two traces are expected.
+**Canalization** is that increase in reliability: the same cue giving the same
+outcome, with fewer intermediates and less scatter, despite variation in genes or
+environment. Two things follow. It is a property of individual development rather
+than of the colony, so obligate caste production is the observation it tries to
+explain and not a restatement of it. And it is comparative. More reliable than
+what needs an answer, and one obligately eusocial species does not supply one.
+That comparison belongs to the five-species arm of the project, not here.
+
+What this case study can ask is narrower: does caste-associated regulation in this
+genome have the properties the framing predicts. Two were tested.
 
 **Regulatory redundancy.** A switch that must fire reliably should be buffered,
 for instance by controlling its genes through several regulatory elements rather
@@ -91,20 +102,21 @@ of one caste than other genes do.
 The project proposal reaches the redundancy prediction by a different route.
 There, extra elements are a hiding place, letting regulatory variation accumulate
 unexpressed until conditions expose it and selection can act (genetic
-accommodation). Same direction, different claim: one is about how caste
-regulation was assembled, the other about how reliably it now fires. Test 1 does
-not separate them.
+accommodation). Same direction, different claim: one is about how caste regulation
+was assembled, the other about how reliably it now fires. Test 1 does not separate
+them.
 
-**The assumption both routes need.** Neither is a claim about queens or workers
-as such, so the tests need a way to point at caste regulation using adult data.
-Caste-biased expression is that handle: genes differentially expressed between
-queens and workers stand in for the genes whose regulation changed with caste.
-That is an assumption rather than a definition, and it is the loosest link in the
-chain. It is taken up in
+**How caste regulation is located.** Neither account is a claim about queens or
+workers as such, so both tests need a way to point at caste-associated regulation
+using adult data. Caste-biased expression is that pointer: genes differentially
+expressed between queens and workers stand in for genes whose regulation has
+something to do with caste. The comparison locates, it does not date. It cannot
+say when or whether anything changed, and treating those genes as the relevant
+ones is an assumption rather than a definition. It is taken up in
 [what the tests could and could not measure](#what-the-tests-could-and-could-not-measure).
 
-Both traces are inferences from the idea, not consequences of it. How much weight
-they bear is the subject of this page.
+Both predictions are inferences from the framing, not consequences of it. How much
+weight they bear is the subject of this page.
 
 ## The system
 
