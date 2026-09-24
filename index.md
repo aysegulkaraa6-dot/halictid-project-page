@@ -143,9 +143,53 @@ A pattern appearing there too is not caste-specific.
 
 ## What was pre-specified, and when
 
-> Both predictions, including effect direction, written down before analysis;
-> say where that is recorded. Mark which later analyses were follow-ups rather
-> than pre-registered tests.
+Both tests were specified before any result was seen. The written record is
+uneven between them, and the difference is worth stating rather than smoothing
+over.
+
+**Test 2 has a complete pre-registration.** `prompts/canalization-test-prompt.md`,
+prepared 15 September 2026, fixes in advance: the null and alternative in words;
+the direction, caste-biased genes predicted to show *lower* dispersion; which arms
+are directional and which are not, queen and worker one-sided, foundress two-sided
+with the reasoning for why no direction can be justified there; the dispersion
+metric, pydeseq2 per-gene, refit within each caste by tissue cell rather than
+across the whole dataset; the exclusion of egg-laying workers at n = 2 per tissue;
+and the brain versus fat body control as required rather than optional. The
+results report came later. A direction was committed to and the result went the
+other way, which is the strongest form this kind of evidence takes.
+
+**Test 1 was pre-specified, but the brief is not in the repository.** The primary
+report, `redundancy-deg-analysis/REPORT.md`, first committed 28 August 2026,
+states that the test was specified before any result was inspected and follows
+that specification, including a standard set in advance that a result appearing
+under only one of the three methods is fragile rather than evidence. That standard
+is then applied against the analysis's own single nominally significant cell,
+which is the behaviour a real pre-registration produces. The permutation test that
+supplies the independent variable has its own brief,
+`prompts/permutation-test-prompt.md`, prepared 10 August 2026, fixing the counting
+scheme and the locus definition ahead of time. So Test 1's pre-registration is
+attested by the report rather than by a separate dated document. It is accurate to
+say it was pre-specified and overstating it to say it is independently verifiable.
+
+**What the repository does not timestamp.** Most of these files entered version
+control on 23 September 2026, when work that had lived only on the laptop was
+committed. Git dates therefore establish nothing about ordering. The dates above
+come from "Prepared" lines written inside the briefs and from the first commit of
+the reports.
+
+**Follow-ups, not pre-registered tests.** Each of these was decided after a result
+was seen and should be read that way:
+
+- The rerun of Test 1 on 74 and 86 training sets (5.6). The universe was widened
+  because excluding the 12 defective sets was itself a judgement call. The brain
+  depletion appears here, not in the pre-registered specification.
+- The characterisation of the predictions (5.7), prepared 22 September, and the
+  heterogeneity and tissue-matching follow-up, prepared 23 September.
+- The power audit, run to bound what the null excludes.
+- The mean-expression correction and the caste-matched reclassification in Test 2
+  (6.3). Both answer specific objections and both strengthened the observed
+  effect, but neither was pre-specified.
+- The WGCNA module analysis in Test 1, which the report already marks secondary.
 
 ## Test 1. Regulatory redundancy
 
