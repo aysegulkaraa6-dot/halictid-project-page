@@ -312,12 +312,33 @@ quantity to trust there.
 
 ### What the literature already said
 
-> The prediction runs against published work. Summarise the findings, not just
-> the citations: expression variance is not low where function is high, and
-> differentially expressed or condition-responsive genes are systematically
-> noisier (Sigalova et al. 2020; Lehner 2010, and whatever else the literature
-> pass turns up). This section is why the Test 2 result is unsurprising in
-> hindsight, and it belongs before rather than after the result is discussed.
+The prediction ran against published work. The reversal is not surprising in
+hindsight.
+
+**Expression variance is not low where function is high.** Across genetically
+diverse individuals, high-variance genes are the ones with narrow promoters and
+few stabilising features, while low-variance genes are held steady either by
+constitutively accessible chromatin or by layers of pausing, distal elements and
+post-transcriptional control. And high-variance genes are significantly more
+likely to be differentially expressed under perturbation (Sigalova et al. 2020).
+That link between being variable and being differentially expressed is the
+paper's own conclusion, not an inference from it.
+
+**Noise and plasticity share a mechanism.** The promoter architecture that lets a
+gene respond to the environment is the architecture that lets it drift
+stochastically, so responsiveness and noise are coupled rather than separately
+optimisable (Lehner 2010, with the general selection argument in Lehner 2008). A
+gene that must respond to a cue cannot also be quiet.
+
+**Theory predicts the same.** In evolving network models, genetic and
+noise-driven variance are proportional, so the genes most able to respond are the
+most variable (Furusawa and Kaneko 2011). In bistable switches driven by a
+morphogen, intrinsic noise is maximal near the switching boundary, which is where
+switch-associated genes sit (Perez-Carrasco et al. 2016).
+
+So the prediction of lower variance in caste-biased genes was in tension with the
+literature before it was tested. Caste-biased genes are by definition strongly
+responsive genes, and responsive genes are noisy.
 
 ## What the tests could and could not measure
 
@@ -372,5 +393,5 @@ quantity to trust there.
 > Everything cited anywhere on this page and on the poster, in one list.
 > Currently expected: West-Eberhard 2003; Jones and Robinson 2018;
 > Kantorovitz et al. 2009; Kazemian et al. 2011; Asma et al. 2024;
-> Rohlfs and Nielsen 2015; Sigalova et al. 2020; Lehner 2010;
-> Masel et al. 2007.
+> Rohlfs and Nielsen 2015; Sigalova et al. 2020; Lehner 2008; Lehner 2010;
+> Furusawa and Kaneko 2011; Perez-Carrasco et al. 2016; Masel et al. 2007.
