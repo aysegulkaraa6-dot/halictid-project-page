@@ -164,7 +164,7 @@ underlying idea using data that does not depend on cross-order transfer.
 Both tests had their hypothesis and their predicted direction written down before
 the analysis ran. That matters most for Test 2, where the prediction was lower
 dispersion in caste-biased genes and the result came out the other way in every
-group (`prompts/canalization-test-prompt.md`, 15 September 2026).
+group.
 
 **Added afterwards.** These were decided once a result was in hand, and are
 follow-ups rather than tests of the proposal's claim:
