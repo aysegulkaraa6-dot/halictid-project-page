@@ -225,22 +225,89 @@ follow-ups rather than tests of the proposal's claim:
 
 ### Prediction and design
 
-> The directional prediction, six caste by tissue groups, how dispersion is
-> estimated.
+The prediction was directional and fixed in advance: if caste determination is
+canalized, genes that distinguish castes should show *lower* within-caste
+expression dispersion than other genes.
+
+Six primary cells, three castes by two tissues. Dispersion is the pydeseq2
+per-gene estimate, refit separately within each cell rather than taken from one
+whole-dataset fit, so no information is shared across the groups being compared.
+11,802 genes before filtering, roughly 10,200 to 10,900 tested per cell after it.
+Egg-laying workers were excluded at n = 2 per tissue. Queen and worker were
+tested one-sided in the predicted direction. Foundress was two-sided and
+exploratory, because a foundress has not committed to an irreversible trajectory
+the way a queen or a mature worker has, and no direction could be justified in
+advance. The brain versus fat body comparison was specified as a required control
+rather than an optional extra. Run 16 September 2026.
 
 ### Result
 
-> The reversal, in all six groups.
+The prediction is not merely unsupported. The effect runs the other way, in every
+cell.
+
+Caste-biased genes are *more* dispersed than other genes in all six. The
+one-sided queen and worker tests return p = 1.0, which is as non-significant as a
+one-sided test can be, because the effect is large and points the wrong way.
+Foundress, tested two-sided, gives p = 1.4 x 10^-169 in brain and 1.6 x 10^-87 in
+fat body. Median dispersions, caste-biased against the rest:
+
+| Cell | caste-biased | other | rank-biserial r |
+|---|---|---|---|
+| queen, brain | 0.122 | 0.019 | -0.58 |
+| worker, brain | 0.120 | 0.021 | -0.51 |
+| foundress, brain | 0.133 | 0.030 | -0.54 |
+| queen, fat body | 0.074 | 0.033 | -0.25 |
+| worker, fat body | 0.150 | 0.071 | -0.31 |
+| foundress, fat body | 0.104 | 0.051 | -0.31 |
+
+There is also a dose response. Within caste-biased genes, the size of the caste
+difference predicts the noise: |log2 fold change| correlates positively with
+dispersion in every cell (Spearman 0.33 to 0.41, all p < 2 x 10^-35). A bigger
+caste effect goes with more variability, not less.
 
 ### Robustness
 
-> Mean-expression correction and the caste-matched fix. The objection each
-> answers.
+Two objections, both anticipated, both tested.
+
+**Dispersion depends on mean expression**, and caste-biased genes might simply
+sit at different expression levels. Regressing log per-gene dispersion on log
+baseMean with caste-biased status as a covariate leaves that status a significant
+positive predictor in all eight cells, the six caste cells and both tissue
+controls, with p from 5.8 x 10^-12 downwards. Stratifying by baseMean quintile
+gives the same answer from another direction: caste-biased genes are more
+dispersed in every one of the top four quintiles in all eight cells, p < 10^-6
+throughout. The pattern breaks down only in the lowest-expression quintile, which
+is where a pure low-count inflation artefact would live, and even there it is
+inconsistent rather than uniform. So a real mean confound exists, stronger in
+brain than in fat body, and it accounts for part of the raw effect size but not
+for the effect.
+
+**The classification used the wrong contrast for foundress.** The original
+caste-biased gene set came from queen versus worker, which uses no foundress data
+at all, so applying it to foundress cells was not justified. Rerunning with a
+caste-matched classification, adding queen versus foundress and worker versus
+foundress, changes foundress's gene set substantially (Jaccard 0.31 to 0.32
+against the old set) and changes nothing about the conclusion. Foundress becomes
+*more* significant, brain from 1.4 x 10^-169 to 3.0 x 10^-188 and fat body from
+1.6 x 10^-87 to 7.4 x 10^-184. Queen and worker shift only slightly, as expected
+given that about 60% of their classification is unchanged by construction.
 
 ### The brain versus fat body control
 
-> The same pattern appears in the tissue comparison, so it is not
-> caste-specific.
+This is the result that decides how the rest should be read.
+
+Genes that distinguish brain from fat body, an axis with nothing to do with
+caste, show the same reversal at comparable effect size. Tissue-biased genes are
+more dispersed, p effectively 0 in brain and 7 x 10^-276 in fat body,
+rank-biserial r -0.47 and -0.41 against -0.25 to -0.58 for the caste cells.
+
+The control was pre-specified with its reading attached: if it comes back
+positive too, the honest conclusion is that strong differential expression in
+general goes with higher dispersion in this dataset, and the caste result is not
+caste-specific. That is what happened. Under mean correction the two axes behave
+the same way as each other as well, a real confound in brain, a weaker one in fat
+body, an independent effect surviving in both. Whatever produces the reversal
+does not distinguish the caste axis from an axis with no bearing on plasticity.
 
 ### What the literature already said
 
