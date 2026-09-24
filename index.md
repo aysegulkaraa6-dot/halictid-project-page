@@ -63,7 +63,8 @@ queens, every year. That is the starting point of this work rather than somethin
 it tests. The question is what regulatory architecture sits behind a caste system
 like that, and whether it carries any signature of how the system came about.
 
-One account says caste systems begin as plasticity. A solitary ancestor already
+The plasticity-first account of West-Eberhard (2003), applied to insect
+sociality by Jones and Robinson (2018), says caste systems begin as plasticity. A solitary ancestor already
 adjusts development to conditions, and in halictids the plausible raw material is
 seasonal and nutritional polyphenism: females provisioned poorly or late in the
 season emerge smaller, with less developed ovaries. Something like both phenotypes
@@ -148,13 +149,17 @@ The last step is the testable claim, and **Test 1 is that test**, run as the
 proposal frames it: caste-biased status against locus redundancy, separately for
 the three scoring methods and both tissues. Most of the effort in this leg went
 into building the machinery the test needs, which is why the prediction pipeline
-takes up as much space below as the result does.
+takes up as much space below as the result does. Building it surfaced two
+undocumented failure modes in the prediction pipeline and a systematic defect in
+a widely used public training-set resource; all three are in
+[methods](#methods-in-full).
 
 **Test 2 is not in the proposal.** It follows from the same framing rather than
 from the proposal text. Buffering is a claim about variance, and within-caste
 expression variance is measurable directly in the 44 RNA-seq samples, with no
-enhancer predictions anywhere in the chain. It was added because it tests the
-underlying idea using data that does not depend on cross-order transfer.
+enhancer predictions anywhere in the chain. It was added because it tests the same idea using only bee data.
+Test 1's predictions rest on carrying enhancer information from flies to bees,
+across two insect orders. Test 2 has no such step.
 
 Both tests had their hypothesis and their predicted direction written down before
 the analysis ran. That matters most for Test 2, where the prediction was lower
@@ -191,27 +196,24 @@ validated in this species, and tied to a gene by proximity alone.
 
 ### From windows to predictions
 
-500 bp windows at 250 bp slide, repeated at 25 phase offsets 10 bp apart, all
-three methods scoring each. Windows above 5% N dropped, per-instance elbow
-threshold, aggregation into a 10 bp signal, MACS2 broad peaks, then a second
-elbow pass on peak amplitudes. Parameters in [methods](#methods-in-full).
+A single pass over the genome fixes one arbitrary window framing, and a real
+enhancer straddling a boundary scores poorly in both halves. So the scan is
+repeated 25 times at 10 bp offsets, 500 bp windows at a 250 bp slide, every
+instance scored by all three methods. Windows more than 5% ambiguous sequence
+are dropped.
 
-Two failures shaped this, and neither announced itself.
+Each instance then needs a cutoff. Rather than keeping a fixed top N, which
+forces the same number of predictions out of every training set however much
+signal it carries, each instance is cut at its own elbow, the point where the
+sorted score curve turns. A training set with little signal keeps few windows.
 
-**IMM looked broken and was not.** With repeats masked, 714 of 1,200 training
-set by method combinations had no detectable threshold. SCRMshaw's k-mer routine
-strips N rather than skipping masked windows, so a mostly-N window returns a
-likelihood ratio of exactly zero, and on IMM's unbounded scale zero outranks the
-million windows scoring negative. No evidence was beating evidence of absence.
-The 5% N filter removed all 714, and IMM turned out to be the most selective
-method rather than a failed one.
-
-**Peak calling was calling the whole genome.** A per-window threshold was used
-as the cutoff on the summed 25-offset signal, which sums routinely exceed, so
-most training sets returned 80,000 to 103,000 peaks covering nearly the entire
-retained footprint. Filling empty bins with zero compounded it, since zero beats
-any negative cutoff. Fixed with a negative sentinel and the reference pipeline's
-two-stage design.
+The 25 instances are combined into one 10 bp resolution signal across the
+genome, so a region scoring well under several framings accumulates support
+while one that scored well by luck under a single framing does not. MACS2 calls
+broad peaks on that signal, and a second elbow pass on the peak amplitudes
+selects the final set. What comes out is a non-overlapping set of predicted
+regulatory regions, per training set, per method. Parameters in
+[methods](#methods-in-full).
 
 ### From predictions to redundant loci
 
