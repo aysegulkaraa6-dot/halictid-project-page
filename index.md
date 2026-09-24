@@ -435,33 +435,48 @@ responsive genes, and responsive genes are noisy.
 
 ## What the tests could and could not measure
 
-> Bounded claims, not apologies. What is ruled out and to what effect size.
-> What could not be measured: functional redundancy, an uncanalized baseline.
-> Then the stage argument: canalization acts at the switch, adults are past it,
-> so what was measured is how tightly the outcome is held. A canalized switch
-> predicts fewer intermediates rather than lower variance, visible only in
-> larvae.
->
-> Then the gene-set argument, which is the larger of the two: caste-biased genes
-> are the difference between two finished outcomes, not the machinery that chose
-> between them. Test 2's tissue control turns this from an
-> argument into an observation. A gene can be queen-biased purely as a consequence of ovary
-> activation without its regulation having changed at the origin of caste. Both
-> tests inherit this proxy and neither can check it. Larval data during the
-> commitment window is what replaces the proxy with genes that actually respond
-> to the cue.
->
-> Parked, not yet done: the permutation null places shuffled intervals anywhere
-> outside repeat and N masked sequence, without matching sequence composition.
-> "Redundant" is therefore partly a proxy for "composition looks enhancer-like".
-> For the pre-specified null this only attenuates, but it is a live alternative
-> explanation for the depletion result. Cheapest check is GC content and repeat
-> proximity as covariates in the existing logistic model.
->
-> **Pending (asked Ana, 23 Sep):** whether larvae are being collected now, and
-> whether larval RNA-seq exists from phase 1. If phase-1 larval data exists the
-> stage limitation is addressable with data in hand rather than a future plan,
-> which changes this section and the next one substantially.
+**What is ruled out.** In the pre-specified specification, redundancy and
+caste-biased status are not associated at any effect size worth caring about:
+power runs 69 to 99.8% at OR 1.5 and is effectively complete at OR 2.0. Below
+about OR 1.2 the study is underpowered and a small effect could have been
+missed. In Test 2 the prediction of lower dispersion is not merely unsupported
+but excluded, since the data run the other way at large effect sizes in all six
+groups.
+
+**The gene definition is the biggest limit.** Both tests locate caste regulation
+through genes differentially expressed between queens and workers, and Test 2's
+tissue control showed that this selects on effect size rather than on mechanism,
+carrying unrelated properties with it. A gene can be queen-biased purely
+downstream of ovary activation without its regulation ever having changed with
+caste. Neither test can check this, because both inherit the proxy.
+
+**Adults are past the switch.** Canalization acts where the developmental
+decision is made. What was measured is how tightly the finished outcome is held,
+which is a different quantity. A canalized switch predicts fewer intermediates
+rather than lower variance, and intermediates are only visible during the
+commitment window.
+
+**There is no uncanalized baseline.** Canalization means more reliable than
+before, or than somewhere else. One obligately eusocial species supplies no
+comparison, so this dataset cannot in principle show an increase in reliability.
+That is what the five-species arm is for.
+
+**Redundancy is not functional redundancy.** SCRMshaw predicts enhancer-like
+sequence. Several predictions at a locus is not several working enhancers, and
+nothing here tests whether losing one is buffered by another.
+
+**One open check.** The permutation null places shuffled intervals anywhere
+outside masked sequence, without matching sequence composition, so "redundant"
+is partly a proxy for "composition looks enhancer-like". For the pre-specified
+null this only attenuates the estimate. For the depletion result it is a live
+alternative explanation. The cheapest test is GC content and repeat proximity as
+covariates in the existing model.
+
+**On larvae.** Larvae, pupae and adults of *L. malachurum* were collected this
+season, along with adults of *H. quadricinctus*. There is no larval RNA-seq from
+phase one, which covered adult social phenotypes only, so the stage limitation
+is not addressable with data in hand. The material exists but is earmarked for
+WP3, and its processing status is tracked in the collaborators' wet-lab table.
 
 ## Where this goes next
 
