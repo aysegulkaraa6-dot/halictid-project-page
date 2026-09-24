@@ -587,7 +587,36 @@ builds SIGILL on them.
 
 ## Data and code
 
-> Where reports, tables and scripts live. What is available on request.
+Everything behind this page lives in a private institutional GitLab repository
+at LMU. It is organised by work package, with this analysis under
+`wp1-regulatory-prediction/scrmshaw/`.
+
+What is there, in the order it would be read:
+
+- **Reports.** One per analysis, each written to stand alone: the main SCRMshaw
+  report, the post-processing report covering the prediction pipeline, the
+  permutation test report, the redundancy and caste-bias report with its power
+  audit, the full rerun on 74 and 86 training sets, the characterisation of what
+  the three methods predict, and the heterogeneity and tissue-matching
+  follow-up. The expression work has its own three, for the main test, the
+  mean-expression check and the caste-matched rerun.
+- **Task briefs.** The prompt written before each analysis, fixing the design
+  and the thresholds in advance. These are the record of what was specified
+  when.
+- **Tables.** Per-locus permutation output, gene-level redundancy calls for each
+  universe and method, the association results, and the dispersion tables.
+- **Scripts.** The analysis code, and the patches applied to SCRMshaw itself.
+
+Prediction intermediates, roughly 360 GB, stay on the compute cluster rather
+than in version control, and are regenerable from the scripts and the training
+sets.
+
+The RNA-seq is not yet public. The *Drosophila* training sets come from the
+SCRMshaw resource and are already public, including the 12 sets with defective
+background models described in [methods](#methods-in-full).
+
+Reports, tables and scripts are available on request, and the training-set
+defect has been written up to be reported to the tool's authors.
 
 ## References
 
