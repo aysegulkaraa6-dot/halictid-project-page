@@ -112,8 +112,8 @@ using adult data. Caste-biased expression is that pointer: genes differentially
 expressed between queens and workers stand in for genes whose regulation has
 something to do with caste. The comparison locates, it does not date. It cannot
 say when or whether anything changed, and treating those genes as the relevant
-ones is an assumption rather than a definition. It is taken up in
-[what the tests could and could not measure](#what-the-tests-could-and-could-not-measure).
+ones is an assumption rather than a definition. Test 2 bears on this assumption directly, and it is taken up
+again in [what the tests could and could not measure](#what-the-tests-could-and-could-not-measure).
 
 Both predictions are inferences from the framing, not consequences of it. How much
 weight they bear is the subject of this page.
@@ -223,6 +223,12 @@ follow-ups rather than tests of the proposal's claim:
 
 ## Test 2. Expression canalization
 
+Test 2 was meant to test the canalization idea on data that does not depend on
+enhancer prediction. It did not manage that. What it produced instead is a check
+on the caste-biased gene definition that both tests rely on, and that is how it
+is presented here: the design and the result first, then the control that changed
+what they mean.
+
 ### Prediction and design
 
 The prediction was directional and fixed in advance: if caste determination is
@@ -294,7 +300,7 @@ given that about 60% of their classification is unchanged by construction.
 
 ### The brain versus fat body control
 
-This is the result that decides how the rest should be read.
+This control decides whether the Test 2 result is about caste at all.
 
 Genes that distinguish brain from fat body, an axis with nothing to do with
 caste, show the same reversal at comparable effect size. Tissue-biased genes are
@@ -308,6 +314,26 @@ caste-specific. That is what happened. Under mean correction the two axes behave
 the same way as each other as well, a real confound in brain, a weaker one in fat
 body, an independent effect surviving in both. Whatever produces the reversal
 does not distinguish the caste axis from an axis with no bearing on plasticity.
+
+### What this says about the caste-biased gene definition
+
+Caste-biased genes are defined by strong differential expression between queens
+and workers. The control shows that strong differential expression comes with
+high dispersion whatever the axis, and the dose response shows the coupling
+directly: within caste-biased genes, the larger the fold change the noisier the
+gene. In Test 2, the criterion used to select the genes and the quantity measured
+on them are two views of the same thing.
+
+That is a finding about the definition rather than about caste. The definition is
+a selection on effect size, not a neutral pointer at caste biology, and it drags
+along properties that have nothing to do with caste.
+
+Test 1 uses the same definition. The coupling is looser there, since redundancy
+of regulatory architecture is not tied to effect size by construction, but the
+same class of problem is visible in Test 1's own data: caste-biased genes sit at
+loci two to seven times larger than other genes. That is why the
+covariate-adjusted model rather than the raw two-by-two is the quantity to trust
+in Test 1.
 
 ### What the literature already said
 
@@ -329,7 +355,8 @@ does not distinguish the caste axis from an axis with no bearing on plasticity.
 >
 > Then the gene-set argument, which is the larger of the two: caste-biased genes
 > are the difference between two finished outcomes, not the machinery that chose
-> between them. A gene can be queen-biased purely as a consequence of ovary
+> between them. Test 2's tissue control turns this from an
+> argument into an observation. A gene can be queen-biased purely as a consequence of ovary
 > activation without its regulation having changed at the origin of caste. Both
 > tests inherit this proxy and neither can check it. Larval data during the
 > commitment window is what replaces the proxy with genes that actually respond
