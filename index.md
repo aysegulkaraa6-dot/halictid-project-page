@@ -177,32 +177,24 @@ follow-ups rather than tests of the proposal's claim:
 
 ### What SCRMshaw predicts, and what it does not
 
-SCRMshaw scores a target genome against *Drosophila* training sets, each a
-collection of known regulatory sequences for one tissue plus a matched
-background. It slides a window along the genome and asks how much more that
-window resembles the positives than the background. Three scoring methods do
-this differently and all three are run:
+SCRMshaw scores a genome against *Drosophila* training sets, each one a
+collection of known regulatory sequences for a tissue plus a matched background,
+asking how much more a window resembles the positives than the background. Three
+methods score differently and all three are run: **IMM**, an interpolated Markov
+model backing off to lower orders where data is sparse; **HexMCD**, a fixed
+fifth-order chain scoring hexamer likelihood ratios; **PAC**, word
+overrepresentation against a Poisson expectation. They are run together because
+they fail differently, not because they are independent.
 
-- **IMM**, an interpolated Markov model, backing off to lower orders where data
-  is sparse, so effective word length adapts to the sequence.
-- **HexMCD**, a fixed fifth-order Markov chain, scoring each hexamer's
-  likelihood ratio under positive versus background models.
-- **PAC**, word overrepresentation, asking which short words occur more often
-  than a Poisson expectation.
-
-They are run together because they fail differently, not because they are
-independent. What comes out is enhancer-like sequence. It is not demonstrated
-function, it is not validated in this species, and it is tied to a gene by
-proximity alone.
+What comes out is enhancer-like sequence. Not demonstrated function, not
+validated in this species, and tied to a gene by proximity alone.
 
 ### From windows to predictions
 
-500 bp windows at a 250 bp slide, repeated at 25 phase offsets 10 bp apart, each
-scored by all three methods. Windows more than 5% N are dropped. Each of the 25
-instances gets its own elbow-point threshold rather than a fixed top-N cut.
-Surviving windows aggregate into a 10 bp genome-wide signal, MACS2 calls broad
-peaks, and a second elbow pass on peak amplitudes selects the final set.
-Parameters are in [methods](#methods-in-full).
+500 bp windows at 250 bp slide, repeated at 25 phase offsets 10 bp apart, all
+three methods scoring each. Windows above 5% N dropped, per-instance elbow
+threshold, aggregation into a 10 bp signal, MACS2 broad peaks, then a second
+elbow pass on peak amplitudes. Parameters in [methods](#methods-in-full).
 
 Two failures shaped this, and neither announced itself.
 
@@ -211,30 +203,26 @@ set by method combinations had no detectable threshold. SCRMshaw's k-mer routine
 strips N rather than skipping masked windows, so a mostly-N window returns a
 likelihood ratio of exactly zero, and on IMM's unbounded scale zero outranks the
 million windows scoring negative. No evidence was beating evidence of absence.
-Filtering at 5% N removed all 714, and IMM turned out to be the most selective
+The 5% N filter removed all 714, and IMM turned out to be the most selective
 method rather than a failed one.
 
-**Peak calling was calling the whole genome.** The first implementation used a
-per-window threshold as the cutoff on the summed 25-offset signal, which sums
-routinely exceed, so most training sets returned 80,000 to 103,000 peaks
-covering nearly the entire retained footprint. Filling empty 10 bp bins with
-zero made it worse, since zero beats any negative cutoff and blank genome read
-as signal. Fixed with a negative sentinel fill and by reinstating the reference
-pipeline's two-stage design.
+**Peak calling was calling the whole genome.** A per-window threshold was used
+as the cutoff on the summed 25-offset signal, which sums routinely exceed, so
+most training sets returned 80,000 to 103,000 peaks covering nearly the entire
+retained footprint. Filling empty bins with zero compounded it, since zero beats
+any negative cutoff. Fixed with a negative sentinel and the reference pipeline's
+two-stage design.
 
 ### From predictions to redundant loci
 
-Raw prediction counts per locus are not interpretable. A long locus in
-favourable sequence collects more predictions than a short one for reasons that
-have nothing to do with biology. The permutation test replaces the count with a
-comparison against that locus's own expectation.
-
-Per training set, the observed prediction intervals are shuffled 1,000 times
-within eligible sequence, everything not repeat or N masked plus the real peak
-footprints, staying on the same scaffold and not overlapping. A locus is called
-redundant when its real count exceeds all 1,000 shuffles. About 1.8% of loci
-carrying predictions clear this, against roughly 3% reported for *Drosophila*.
-That call is Test 1's independent variable.
+Raw prediction counts per locus are not interpretable: a long locus in
+favourable sequence collects more predictions for reasons unrelated to biology.
+The permutation test replaces the count with a comparison against that locus's
+own expectation. Per training set, the real intervals are shuffled 1,000 times
+within eligible sequence, same scaffold, non-overlapping. A locus is redundant
+when its real count exceeds all 1,000 shuffles. About 1.8% of loci carrying
+predictions clear this, against roughly 3% reported for *Drosophila*. That call
+is Test 1's independent variable.
 
 ### From loci to genes
 
@@ -242,42 +230,37 @@ A **testable locus** carries at least one real prediction in at least one
 training set. Loci with no predictions anywhere are absence of data rather than
 evidence of absence, so they are excluded rather than counted as non-redundant.
 
-The unit of analysis is the gene, since caste-biased status is a property of
-genes. A gene counts as **redundant** if it touches at least one locus called
-significant in at least one training set. The obvious worry is that taking a
-maximum over 36 or 74 sets inflates that call. It does not, because the
-multiplicity already sits inside the permutation test: each set's call is itself
-a test against that locus's own null. What the maximum does introduce is a size
-dependence, since a longer locus gets more chances, and that is handled with
-covariates rather than ignored.
-
-Gene universes differ by method, because the methods predict in different
-places. Each method is analysed against its own.
+The unit is the gene, since caste-biased status is a property of genes. A gene
+is **redundant** if it touches at least one locus called significant in at least
+one training set. The obvious worry is that taking a maximum over 36 or 74 sets
+inflates that call. It does not: the multiplicity already sits inside the
+permutation test, each set's call being a test against that locus's own null.
+What the maximum does introduce is a size dependence, longer loci getting more
+chances, handled with covariates. Gene universes differ by method, and each
+method is analysed against its own.
 
 ### Result on 36 training sets
 
-Null. Odds ratios from 0.84 to 1.27, every confidence interval crossing 1, every
-Fisher p above 0.15, in both tissues and all three methods. The one nominally
+Null. Odds ratios 0.84 to 1.27, every confidence interval crossing 1, every
+Fisher p above 0.15, both tissues, all three methods. The one nominally
 significant result (PAC, fat body, logistic OR 1.27) fails the standard set in
-advance that a result appearing under a single method is fragile rather than
-evidence.
+advance that a single-method result is fragile rather than evidence.
 
-A power audit asked whether this was a real null or a detectability artefact.
-Three checks agreed. A locus with one prediction can reach significance, so
-there is no hard floor. Caste-biased genes sit at larger loci with more
-predictions than other genes, the opposite of what a masking explanation
-requires. Matching on locus length and prediction count changes nothing.
-Simulation gives 69 to 99.8% power at OR 1.5 and 98 to 100% at OR 2.0; below
-about OR 1.2 power is genuinely limited, 20 to 59%.
+A power audit asked whether this was a real null or a detectability artefact. A
+locus with one prediction can reach significance, so there is no hard floor.
+Caste-biased genes sit at larger loci with more predictions than other genes,
+the opposite of what a masking explanation needs. Matching on locus length and
+prediction count changes nothing. Simulation gives 69 to 99.8% power at OR 1.5
+and 98 to 100% at OR 2.0; below about OR 1.2 power is limited, 20 to 59%.
 
 A well-powered null, then, against any effect worth caring about. The proposal
 predicted enrichment.
 
 ### Result on 74 and 86 training sets
 
-The original run excluded 12 training sets with defective background models.
-Since that exclusion was a judgement call and 38 further sets became available,
-the test was rerun on wider universes. Brain, `retained74`:
+The original run excluded 12 sets with defective background models. That
+exclusion was a judgement call, and 38 further sets became available, so the
+test was rerun on wider universes. Brain, `retained74`:
 
 | Method | OR | 95% CI | Fisher p |
 |---|---|---|---|
@@ -287,50 +270,47 @@ the test was rerun on wider universes. Brain, `retained74`:
 | PAC | 0.901 | 0.723, 1.123 | 0.385 |
 
 Fat body is null under every method. The pattern strengthens in `all86` (IMM
-0.655, p = 0.0004) and appears in the 38 new sets on their own (IMM 0.635,
-p = 0.0036).
+0.655, p = 0.0004) and appears in the 38 new sets alone (IMM 0.635, p = 0.0036).
 
-The direction is depletion. Caste-biased brain genes are *less* likely to sit at
-redundant loci, not more, which is the opposite of the proposal's prediction.
-Two earlier findings point the same way: the queen-associated WGCNA modules are
-also less redundant, and the original five-set neural analysis gave OR 0.30.
+The direction is depletion: caste-biased brain genes are *less* likely to sit at
+redundant loci, the opposite of the prediction. Two earlier findings point the
+same way, the queen-associated WGCNA modules being less redundant and the
+original five-set neural analysis giving OR 0.30.
 
 Under covariate adjustment merged survives (p = 0.0089) and IMM does not
 (p = 0.080). This is a follow-up rather than a pre-specified test, and it rests
-on the same gene definition questioned in Test 2, so it is reported as a
-direction that needs explaining rather than as a finding.
+on the same gene definition Test 2 undermined, so it is reported as a direction
+needing explanation rather than as a finding.
 
 ### What the method disagreement means
 
 The methods predict in very different places. Median final peaks per training
 set: IMM about 1,036 covering 1.2% of the genome, HexMCD 8,164 covering 6%, PAC
 5,520 covering 4.9%. Base-pair Jaccard between any two is 0.04 to 0.13, and the
-relationship is nested rather than symmetric, with 86% of IMM's footprint inside
-HexMCD's against 19% the other way. Merged is a union, 40.5% of its base pairs
-HexMCD-private and 39.3% PAC-private with 2.4% three-way, yet at the level of
-which loci are called significant it correlates 0.93 with HexMCD.
+relationship is nested, 86% of IMM's footprint sitting inside HexMCD's against
+19% the other way. Merged is a union, yet at the level of which loci are called
+significant it correlates 0.93 with HexMCD.
 
-So are the four odds ratios above four effects or one? The methods share data, so
-a standard heterogeneity test does not apply. A paired bootstrap over genes was
-used instead, resampling the same genes for all four methods. In `retained74` no
-pairwise difference excludes zero. Cochran's I², reported descriptively only, is
-0.6% in brain and 0% in fat body.
+So: four effects or one? The methods share data, so a standard heterogeneity
+test does not apply. A paired bootstrap over genes, resampling the same genes
+for all four methods, finds no pairwise difference excluding zero in
+`retained74`. Cochran's I², descriptive only, is 0.6% in brain and 0% in fat
+body.
 
 The methods do not disagree. Merged is the best-powered estimate of one shared
 effect, and its association lives entirely in the slice where at least two
-methods agree (OR 0.787, p = 0.024, covering 98.2% of its significant loci). No
+methods agree (OR 0.787, p = 0.024, 98.2% of its significant loci). No
 significant locus is IMM-exclusive.
 
-Two explanations are ruled out here. Covariate confounding does not account for
-adjustment weakening IMM and strengthening merged: IMM shows the *weakest*
-locus-length confounding of the four and merged the strongest, the reverse of
-what that story needs. Power does account for it, merged having about 1.7 times
-more redundant genes. And the depletion is not neural-specific. Expanding the
-neural training-set tier from 5 sets to 20 moves IMM's brain OR from 0.30 to
-0.704, almost exactly the full tissue-unrestricted result of 0.684, with no
+Two explanations are ruled out. Covariate confounding does not account for
+adjustment weakening IMM and strengthening merged, since IMM shows the *weakest*
+locus-length confounding and merged the strongest. Power does, merged having
+about 1.7 times more redundant genes. And the depletion is not neural-specific:
+expanding the neural tier from 5 training sets to 20 moves IMM's brain OR from
+0.30 to 0.704, almost exactly the full tissue-unrestricted 0.684, with no
 matched versus mismatched divergence and a clean fat-body negative control. The
 original neural finding was an extreme small-sample estimate regressing toward
-the dataset's real effect size, not a concentrated neural signal.
+the dataset's real effect size.
 
 ## Test 2. Expression canalization
 
