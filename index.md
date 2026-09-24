@@ -224,38 +224,28 @@ follow-ups rather than tests of the proposal's claim:
 ## Test 2. Expression canalization
 
 Test 2 was meant to test the canalization idea on data that does not depend on
-enhancer prediction. It did not manage that. What it produced instead is a check
-on the caste-biased gene definition that both tests rely on, and that is how it
-is presented here: the design and the result first, then the control that changed
-what they mean.
+enhancer prediction. It ended up testing something else: the caste-biased gene
+definition that both tests rely on.
 
 ### Prediction and design
 
-The prediction was directional and fixed in advance: if caste determination is
-canalized, genes that distinguish castes should show *lower* within-caste
-expression dispersion than other genes.
+If caste determination is canalized, genes that distinguish castes should vary
+*less* between individuals of one caste than other genes do. The direction was
+fixed in advance.
 
 Six groups, one per caste and tissue combination. Dispersion is the pydeseq2
-per-gene estimate, refit separately within each group rather than taken from one
-whole-dataset fit, so no information is shared across the groups being compared.
-11,802 genes before filtering, roughly 10,200 to 10,900 tested per group after it.
-Egg-laying workers were excluded at n = 2 per tissue. Queen and worker were
-tested one-sided in the predicted direction. Foundress was two-sided and
-exploratory, because a foundress has not committed to an irreversible trajectory
-the way a queen or a mature worker has, and no direction could be justified in
-advance. The brain versus fat body comparison was specified as a required control
-rather than an optional extra. Run 16 September 2026.
+per-gene estimate, refit within each group so nothing is shared across the
+comparison. Roughly 10,200 to 10,900 genes tested per group. Egg-laying workers
+excluded at n = 2. Queen and worker one-sided in the predicted direction,
+foundress two-sided, because a foundress has not committed to a trajectory the
+way a queen or a mature worker has. Brain versus fat body was specified as a
+required control. Run 16 September 2026.
 
 ### Result
 
-The prediction is not merely unsupported. The effect runs the other way, in every
-group.
-
-Caste-biased genes are *more* dispersed than other genes in all six. The
-one-sided queen and worker tests return p = 1.0, which is as non-significant as a
-one-sided test can be, because the effect is large and points the wrong way.
-Foundress, tested two-sided, gives p = 1.4 x 10^-169 in brain and 1.6 x 10^-87 in
-fat body. Median dispersions, caste-biased against the rest:
+The effect runs the other way, in every group. Caste-biased genes are *more*
+dispersed. The one-sided queen and worker tests return p = 1.0. Foundress,
+two-sided, gives p = 1.4 x 10^-169 in brain and 1.6 x 10^-87 in fat body.
 
 | Group | caste-biased | other | rank-biserial r |
 |---|---|---|---|
@@ -266,74 +256,59 @@ fat body. Median dispersions, caste-biased against the rest:
 | worker, fat body | 0.150 | 0.071 | -0.31 |
 | foundress, fat body | 0.104 | 0.051 | -0.31 |
 
-There is also a dose response. Within caste-biased genes, the size of the caste
-difference predicts the noise: |log2 fold change| correlates positively with
-dispersion in every group (Spearman 0.33 to 0.41, all p < 2 x 10^-35). A bigger
-caste effect goes with more variability, not less.
+Median within-caste dispersion. The gradient inside the caste-biased set points
+the same way: the genes that most sharply separate queens from workers are also
+the genes that vary most between individuals of the same caste, which is the
+opposite of what a reliable caste marker should look like (Spearman 0.33 to
+0.41, all p < 2 x 10^-35).
 
 ### Robustness
 
-Two objections, both anticipated, both tested.
+Dispersion depends on mean expression, and caste-biased genes might simply sit at
+different expression levels. Regressing log dispersion on log baseMean with
+caste-biased status as a covariate leaves that status a significant positive
+predictor in all eight groups, p from 5.8 x 10^-12 downwards. Stratifying by
+baseMean quintile agrees: caste-biased genes are more dispersed in the top four
+quintiles of all eight groups, p < 10^-6 throughout, breaking down only in the
+lowest quintile where low-count inflation would live. A real mean confound
+exists, stronger in brain, and accounts for part of the effect size but not for
+the effect.
 
-**Dispersion depends on mean expression**, and caste-biased genes might simply
-sit at different expression levels. Regressing log per-gene dispersion on log
-baseMean with caste-biased status as a covariate leaves that status a significant
-positive predictor in all eight groups, the six caste groups and both tissue
-controls, with p from 5.8 x 10^-12 downwards. Stratifying by baseMean quintile
-gives the same answer from another direction: caste-biased genes are more
-dispersed in every one of the top four quintiles in all eight groups, p < 10^-6
-throughout. The pattern breaks down only in the lowest-expression quintile, which
-is where a pure low-count inflation artefact would live, and even there it is
-inconsistent rather than uniform. So a real mean confound exists, stronger in
-brain than in fat body, and it accounts for part of the raw effect size but not
-for the effect.
-
-**The classification used the wrong contrast for foundress.** The original
-caste-biased gene set came from queen versus worker, which uses no foundress data
-at all, so applying it to foundress groups was not justified. Rerunning with a
-caste-matched classification, adding queen versus foundress and worker versus
-foundress, changes foundress's gene set substantially (Jaccard 0.31 to 0.32
-against the old set) and changes nothing about the conclusion. Foundress becomes
-*more* significant, brain from 1.4 x 10^-169 to 3.0 x 10^-188 and fat body from
-1.6 x 10^-87 to 7.4 x 10^-184. Queen and worker shift only slightly, as expected
-given that about 60% of their classification is unchanged by construction.
+The analysis was also run with a caste-matched classification, adding queen
+versus foundress and worker versus foundress contrasts, with the same result in
+every group.
 
 ### The brain versus fat body control
 
-This control decides whether the Test 2 result is about caste at all.
+This decides whether the result is about caste at all.
 
-Genes that distinguish brain from fat body, an axis with nothing to do with
-caste, show the same reversal at comparable effect size. Tissue-biased genes are
-more dispersed, p effectively 0 in brain and 7 x 10^-276 in fat body,
-rank-biserial r -0.47 and -0.41 against -0.25 to -0.58 for the caste groups.
+Genes distinguishing brain from fat body, an axis unrelated to caste, show the
+same reversal at the same effect size: p effectively 0 in brain, 7 x 10^-276 in
+fat body, rank-biserial r -0.47 and -0.41 against -0.25 to -0.58 for the caste
+groups.
 
-The control was pre-specified with its reading attached: if it comes back
-positive too, the honest conclusion is that strong differential expression in
+The control was pre-specified with its reading attached. If it came back positive
+too, the honest conclusion would be that strong differential expression in
 general goes with higher dispersion in this dataset, and the caste result is not
-caste-specific. That is what happened. Under mean correction the two axes behave
-the same way as each other as well, a real confound in brain, a weaker one in fat
-body, an independent effect surviving in both. Whatever produces the reversal
-does not distinguish the caste axis from an axis with no bearing on plasticity.
+caste-specific. That is what happened.
 
 ### What this says about the caste-biased gene definition
 
-Caste-biased genes are defined by strong differential expression between queens
-and workers. The control shows that strong differential expression comes with
-high dispersion whatever the axis, and the dose response shows the coupling
-directly: within caste-biased genes, the larger the fold change the noisier the
-gene. In Test 2, the criterion used to select the genes and the quantity measured
-on them are two views of the same thing.
+Caste-biased genes are defined by strong differential expression. The control
+shows that strong differential expression brings high dispersion with it on any
+axis, and the gradient shows the same coupling inside the caste set. The
+criterion used to select the genes and the quantity measured on them are two
+views of the same thing.
 
-That is a finding about the definition rather than about caste. The definition is
-a selection on effect size, not a neutral pointer at caste biology, and it drags
-along properties that have nothing to do with caste.
+That is a finding about the definition, not about caste. The definition selects
+on effect size rather than on mechanism, and carries properties along with it
+that have nothing to do with caste.
 
-Test 1 uses the same definition. The coupling is looser there, since redundancy
-of regulatory architecture is not tied to effect size by construction, but the
-same class of problem is visible in Test 1's own data: caste-biased genes sit at
-loci two to seven times larger than other genes. That is why the
-covariate-adjusted model rather than the raw two-by-two is the quantity to trust
-in Test 1.
+Test 1 uses the same definition. The coupling is looser, since redundancy is not
+tied to effect size by construction, but the same problem shows in Test 1's own
+data: caste-biased genes sit at loci two to seven times larger than other genes.
+That is why the covariate-adjusted model rather than the raw two-by-two is the
+quantity to trust there.
 
 ### What the literature already said
 
