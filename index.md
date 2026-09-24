@@ -56,11 +56,6 @@ across the other genomes. Results here are properties of this species and this
 dataset, not claims about halictids in general. Where the work bears on the
 wider comparison it is flagged as such.
 
-> **Fill in:** the genome set. The repository only evidences *L. malachurum*
-> and *Nomia melanderi*, so list the rest yourself rather than trusting me.
-> Also expand the abbreviated species names above, since the poster carried
-> only the initials and I am not going to guess the genera.
-
 ## Background
 
 *L. malachurum* is obligately eusocial. Every colony produces workers, and then
