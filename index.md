@@ -130,8 +130,7 @@ three adult female roles can be sampled in one season from one population.
 - **Caste-biased genes:** differentially expressed between castes. Primary
   contrast queen versus worker, DESeq2, padj < 0.05 and |log2FC| >= 1.
 - **Predictions:** regulatory elements predicted from the *L. malachurum*
-  assembly, scored against *Drosophila* training data. Section 5.1 covers what
-  that licenses.
+  assembly, scored against *Drosophila* training data. The section on what SCRMshaw predicts covers what that licenses.
 
 **One confound.** Foundress samples were collected April 2024, queen and worker
 July 2023. Caste and season are fully confounded for foundress, so any foundress
@@ -180,82 +179,81 @@ the reports.
 **Follow-ups, not pre-registered tests.** Each of these was decided after a result
 was seen and should be read that way:
 
-- The rerun of Test 1 on 74 and 86 training sets (5.6). The universe was widened
+- The rerun of Test 1 on 74 and 86 training sets. The universe was widened
   because excluding the 12 defective sets was itself a judgement call. The brain
   depletion appears here, not in the pre-registered specification.
-- The characterisation of the predictions (5.7), prepared 22 September, and the
+- The characterisation of the predictions, prepared 22 September, and the
   heterogeneity and tissue-matching follow-up, prepared 23 September.
 - The power audit, run to bound what the null excludes.
-- The mean-expression correction and the caste-matched reclassification in Test 2
-  (6.3). Both answer specific objections and both strengthened the observed
+- The mean-expression correction and the caste-matched reclassification in Test 2. Both answer specific objections and both strengthened the observed
   effect, but neither was pre-specified.
 - The WGCNA module analysis in Test 1, which the report already marks secondary.
 
 ## Test 1. Regulatory redundancy
 
-### 5.1 What SCRMshaw predicts, and what it does not
+### What SCRMshaw predicts, and what it does not
 
 > What it is, the three scoring methods and what each computes, why all three
 > are run. Then the limit: enhancer-like sequence, not demonstrated function.
 
-### 5.2 From windows to predictions
+### From windows to predictions
 
 > The chain with parameters: 500 bp windows at 25 offsets, three scores,
 > nfrac <= 0.05, per-instance elbow, 10 bp signal, MACS2 stage 1, stage-2 elbow
 > on amplitudes, final peaks. Include the two failures that shaped it: IMM's
 > degenerate elbows under N-masking, and the zero-fill bug.
 
-### 5.3 From predictions to redundant loci
+### From predictions to redundant loci
 
 > The permutation test: the question it answers, why raw counts are not
 > interpretable, the shuffling constraint, 1000 replicates, empirical p, BH
 > within training set. Defines the independent variable.
 
-### 5.4 From loci to genes
+### From loci to genes
 
 > Testable locus and why the filter exists. Binary and count redundancy. Why
 > "at least one significant training set" is the right threshold and where the
 > multiplicity actually lives. Gene as unit of analysis. Different gene
 > universes per method.
 
-### 5.5 Result on 36 training sets
+### Result on 36 training sets
 
 > The null with odds ratios, and the power audit. State what it rules out and
 > to what effect size.
 
-### 5.6 Result on 74 and 86 training sets
+### Result on 74 and 86 training sets
 
 > Fat body unchanged, brain depleted under IMM and merged. Numbers, direction,
 > caveats, and the two earlier findings pointing the same way. Hold until the
 > follow-up lands.
 
-### 5.7 What the method disagreement means
+### What the method disagreement means
 
 > Peak profiles, base-pair Jaccard, the IMM/HexMCD asymmetry, what merged is.
 > Hold until the heterogeneity test lands.
 
 ## Test 2. Expression canalization
 
-### 6.1 Prediction and design
+### Prediction and design
 
 > The directional prediction, six caste by tissue groups, how dispersion is
 > estimated.
 
-### 6.2 Result
+### Result
 
 > The reversal, in all six groups.
 
-### 6.3 Robustness
+### Robustness
 
 > Mean-expression correction and the caste-matched fix. The objection each
 > answers.
 
-### 6.4 The brain versus fat body control
+### The brain versus fat body control
 
 > The same pattern appears in the tissue comparison, so it is not
 > caste-specific.
 
-### 6.5 What the literature already said
+### What the literature already said
 
 > The prediction runs against published work. Summarise the findings, not just
 > the citations: expression variance is not low where function is high, and
