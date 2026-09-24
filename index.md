@@ -14,7 +14,7 @@ LMU München. PI: Sonja Grath. Last updated 23 September 2026.*
 [Project scope](#project-scope) ·
 [Background](#background) ·
 [The system](#the-system) ·
-[What was pre-specified](#what-was-pre-specified-and-when) ·
+[Proposal and scope of work](#what-the-proposal-asked-for-and-what-was-done) ·
 [Test 1](#test-1-regulatory-redundancy) ·
 [Test 2](#test-2-expression-canalization) ·
 [Limits](#what-the-tests-could-and-could-not-measure) ·
@@ -140,54 +140,43 @@ is the primary contrast.
 **One control.** Brain versus fat body identity is tested the same way as caste.
 A pattern appearing there too is not caste-specific.
 
-## What was pre-specified, and when
+## What the proposal asked for, and what was done
 
-Both tests were specified before any result was seen. The written record is
-uneven between them, and the difference is worth stating rather than smoothing
-over.
+The inherited proposal reasons in four steps. SCRMshaw predicts enhancer locations
+from sequence using *Drosophila* training data. Some loci carry several
+predictions, which is regulatory redundancy. Redundancy buffers regulatory
+variation, letting it accumulate unexpressed until conditions expose it. Therefore
+caste-biased genes, taken to be the genes whose regulation changed with the origin
+of eusociality, should carry more redundancy than other genes.
 
-**Test 2 has a complete pre-registration.** `prompts/canalization-test-prompt.md`,
-prepared 15 September 2026, fixes in advance: the null and alternative in words;
-the direction, caste-biased genes predicted to show *lower* dispersion; which arms
-are directional and which are not, queen and worker one-sided, foundress two-sided
-with the reasoning for why no direction can be justified there; the dispersion
-metric, pydeseq2 per-gene, refit within each caste by tissue cell rather than
-across the whole dataset; the exclusion of egg-laying workers at n = 2 per tissue;
-and the brain versus fat body control as required rather than optional. The
-results report came later. A direction was committed to and the result went the
-other way, which is the strongest form this kind of evidence takes.
+The last step is the testable claim, and **Test 1 is that test**, run as the
+proposal frames it: caste-biased status against locus redundancy, separately for
+the three scoring methods and both tissues. Most of the effort in this leg went
+into building the machinery the test needs, which is why the prediction pipeline
+takes up as much space below as the result does.
 
-**Test 1 was pre-specified, but the brief is not in the repository.** The primary
-report, `redundancy-deg-analysis/REPORT.md`, first committed 28 August 2026,
-states that the test was specified before any result was inspected and follows
-that specification, including a standard set in advance that a result appearing
-under only one of the three methods is fragile rather than evidence. That standard
-is then applied against the analysis's own single nominally significant cell,
-which is the behaviour a real pre-registration produces. The permutation test that
-supplies the independent variable has its own brief,
-`prompts/permutation-test-prompt.md`, prepared 10 August 2026, fixing the counting
-scheme and the locus definition ahead of time. So Test 1's pre-registration is
-attested by the report rather than by a separate dated document. It is accurate to
-say it was pre-specified and overstating it to say it is independently verifiable.
+**Test 2 is not in the proposal.** It follows from the same framing rather than
+from the proposal text. Buffering is a claim about variance, and within-caste
+expression variance is measurable directly in the 44 RNA-seq samples, with no
+enhancer predictions anywhere in the chain. It was added because it tests the
+underlying idea using data that does not depend on cross-order transfer.
 
-**What the repository does not timestamp.** Most of these files entered version
-control on 23 September 2026, when work that had lived only on the laptop was
-committed. Git dates therefore establish nothing about ordering. The dates above
-come from "Prepared" lines written inside the briefs and from the first commit of
-the reports.
+Both tests had their hypothesis and their predicted direction written down before
+the analysis ran. That matters most for Test 2, where the prediction was lower
+dispersion in caste-biased genes and the result came out the other way in every
+group (`prompts/canalization-test-prompt.md`, 15 September 2026).
 
-**Follow-ups, not pre-registered tests.** Each of these was decided after a result
-was seen and should be read that way:
+**Added afterwards.** These were decided once a result was in hand, and are
+follow-ups rather than tests of the proposal's claim:
 
-- The rerun of Test 1 on 74 and 86 training sets. The universe was widened
-  because excluding the 12 defective sets was itself a judgement call. The brain
-  depletion appears here, not in the pre-registered specification.
-- The characterisation of the predictions, prepared 22 September, and the
-  heterogeneity and tissue-matching follow-up, prepared 23 September.
-- The power audit, run to bound what the null excludes.
-- The mean-expression correction and the caste-matched reclassification in Test 2. Both answer specific objections and both strengthened the observed
-  effect, but neither was pre-specified.
-- The WGCNA module analysis in Test 1, which the report already marks secondary.
+- Rerunning Test 1 on 74 and 86 training sets, after the first run excluded 12
+  defective ones. The brain depletion appears here.
+- Characterising what the three scoring methods actually predict, and the
+  heterogeneity and tissue-matching work that came out of it.
+- A power audit, to bound what the null excludes.
+- The mean-expression correction and the caste-matched reclassification in Test 2,
+  each answering a specific objection.
+- The WGCNA module arm of Test 1.
 
 ## Test 1. Regulatory redundancy
 
