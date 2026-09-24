@@ -268,6 +268,13 @@ follow-ups rather than tests of the proposal's claim:
 > commitment window is what replaces the proxy with genes that actually respond
 > to the cue.
 >
+> Parked, not yet done: the permutation null places shuffled intervals anywhere
+> outside repeat and N masked sequence, without matching sequence composition.
+> "Redundant" is therefore partly a proxy for "composition looks enhancer-like".
+> For the pre-specified null this only attenuates, but it is a live alternative
+> explanation for the depletion result. Cheapest check is GC content and repeat
+> proximity as covariates in the existing logistic model.
+>
 > **Pending (asked Ana, 23 Sep):** whether larvae are being collected now, and
 > whether larval RNA-seq exists from phase 1. If phase-1 larval data exists the
 > stage limitation is addressable with data in hand rather than a future plan,
