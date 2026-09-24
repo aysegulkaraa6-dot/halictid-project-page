@@ -492,8 +492,73 @@ responsive genes, and responsive genes are noisy.
 
 ## Methods in full
 
-> Parameters, thresholds, software versions, and the universe definitions
-> (retained36, all48, retained74, all86, new38) with what each is for.
+**Genome and loci.** *L. malachurum* chromosome-length assembly, 267 Mb. Locus
+partition: 27,244 flanking-gene loci under Asma et al.'s uncapped dynamic
+definition, taken from SCRMshaw's `.hits` rather than `.hits.ranked`, which
+imposes a hard 50 kb cap. Predictions assigned to loci by plurality base-pair
+overlap, applied identically to real and shuffled data. Tandem repeats masked
+before prediction.
+
+**Prediction.** SCRMshaw HD, 25 instances per training set at 10 bp phase
+offsets (`--lb 0,10,...,240`), 500 bp windows at 250 bp slide, `--thitw 200000`
+per instance. The retention cap was raised from 100,000 so post-hoc filtering
+would not discard real signal; PAC's deepest threshold landed at 113,903.
+Windows above 5% N dropped. Per-instance elbow-point threshold rather than a
+fixed top-N cut.
+
+**Peak calling.** Filtered windows aggregated across the 25 offsets into a 10 bp
+bedgraph, named chromosomes only (unplaced scaffolds carry 3.5% of filtered
+windows). Empty bins filled with -999999, not 0. Stage 1, MACS2 `bdgpeakcall`
+at the window-score cutoff. Stage 2, elbow threshold on peak amplitudes
+(narrowPeak score / 10).
+
+**Permutation test.** `bedtools shuffle -incl eligible.bed -chrom -noOverlapping
+-maxTries 1000`, 1,000 replicates per training set per method. `eligible.bed` is
+the nfrac <= 0.05 windows union the real peak footprints, 99.2% of the genome.
+Significance is max-based: the real count exceeds all 1,000 shuffles. Zero
+placement failures across 1,000,000 placements.
+
+**Expression.** 44 RNA-seq libraries, brain and fat body dissected from the same
+bees. Queen n = 5 per tissue, worker n = 9, foundress n = 8; egg-laying workers
+(n = 2) excluded. Caste-biased genes from DESeq2 in R, padj < 0.05 and
+|log2FoldChange| >= 1, primary contrast queen versus worker. Dispersion from
+pydeseq2, per gene, refit within each caste and tissue group.
+
+**Statistics.** Fisher's exact as the primary test of redundancy against
+caste-biased status. Logistic regression with log baseMean, log touching-locus
+length and n_predictions as covariates. Negative binomial for graded redundancy
+counts. Mann-Whitney with rank-biserial r for dispersion, one-sided for queen
+and worker, two-sided for foundress. Paired bootstrap over genes, 2,000
+replicates, for between-method comparison. Cochran's Q and I² descriptive only,
+since the method estimates share data.
+
+**One covariate caveat.** A `tissue_bias` covariate exists in the analysis
+scripts but was passed as None throughout the main results, so every
+tissue-bias-adjusted column is empty. The adjusted p-values quoted on this page
+are from the three-covariate models. `tissue_bias` was computed properly for the
+first time in the tissue-matched follow-up.
+
+**Training-set universes.**
+
+| Name | Contents | n | Role |
+|---|---|---|---|
+| `all48` | all original sets | 48 | Original sensitivity |
+| `retained36` | 48 minus 12 with defective background models | 36 | Original primary |
+| `new38` | newly generated sets | 38 | Diagnostic |
+| `retained74` | 36 + 38 | 74 | Current primary |
+| `all86` | 48 + 38 | 86 | Current sensitivity |
+
+The 12 excluded sets are the `mapping1.` and `mapping2.` prefix-named ones,
+whose background to positive ratios are about 0.097 against roughly 1.0 for
+every other set. Their negative sets are an order of magnitude too small, which
+leaves the background model over-permissive. The similarly named suffix sets,
+such as `blastoderm.mapping1`, are normal. What the prefix means is documented
+nowhere.
+
+**Software.** Python 3.11.2, numpy 1.26.4, scipy 1.13.1, pandas 2.2.3,
+statsmodels 0.15.0, pydeseq2 0.5.0, anndata 0.11.4, bedtools 2.30.0, MACS2.
+numpy is pinned below 2.0 because the compute nodes are pre-SSE4.2 and newer
+builds SIGILL on them.
 
 ## Data and code
 
