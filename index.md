@@ -520,6 +520,38 @@ tissue-bias-adjusted column is empty. The adjusted p-values quoted on this page
 are from the three-covariate models. `tissue_bias` was computed properly for the
 first time in the tissue-matched follow-up.
 
+**Three problems found and fixed.** None of the three announced itself, and all
+three would have changed the results.
+
+*Masked sequence outscoring real signal.* Large parts of any genome are masked
+as repetitive or unknown and written as N. SCRMshaw's scoring routine deletes
+those letters rather than skipping the window, so a window that is almost
+entirely N comes back with a score of exactly zero. On IMM's scale, which runs
+from large negative to large positive, zero is a good score: it beat the million
+windows that scored negative. The effect was that 714 of 1,200 training set by
+method runs had no usable threshold, and IMM looked like a broken method.
+Discarding any window more than 5% N fixed all 714, and IMM turned out to be the
+most selective of the three rather than the worst.
+
+*A peak caller calling the whole genome.* The cutoff deciding which windows
+counted was measured on single windows but applied to the signal after 25
+overlapping sets of windows had been summed. Sums are bigger than their parts,
+so almost everything passed: most training sets came back with 80,000 to 103,000
+peaks, in effect one continuous block across the genome. Empty stretches made it
+worse, because they had been filled with zero, and zero clears any negative
+cutoff, so blank genome registered as signal. Filling empty stretches with a
+large negative number and restoring the reference pipeline's two-stage peak call
+fixed it.
+
+*A defect in a public training-set resource.* Twelve of the 48 original training
+sets have background to positive ratios of about 0.097, against roughly 1.0 for
+every other set. Their background sequences are an order of magnitude too few,
+which leaves the background model over-permissive, so more of the genome scores
+as enhancer-like. These are the `mapping1.` and `mapping2.` prefix-named sets;
+the similarly named suffix sets, such as `blastoderm.mapping1`, are normal. What
+the prefix means is documented nowhere, in the resource, its generation
+workflow, or the papers that use it.
+
 **Training-set universes.**
 
 | Name | Contents | n | Role |
@@ -530,12 +562,8 @@ first time in the tissue-matched follow-up.
 | `retained74` | 36 + 38 | 74 | Current primary |
 | `all86` | 48 + 38 | 86 | Current sensitivity |
 
-The 12 excluded sets are the `mapping1.` and `mapping2.` prefix-named ones,
-whose background to positive ratios are about 0.097 against roughly 1.0 for
-every other set. Their negative sets are an order of magnitude too small, which
-leaves the background model over-permissive. The similarly named suffix sets,
-such as `blastoderm.mapping1`, are normal. What the prefix means is documented
-nowhere.
+The 12 excluded sets are the ones with defective background models, described
+above.
 
 **Software.** Python 3.11.2, numpy 1.26.4, scipy 1.13.1, pandas 2.2.3,
 statsmodels 0.15.0, pydeseq2 0.5.0, anndata 0.11.4, bedtools 2.30.0, MACS2.
