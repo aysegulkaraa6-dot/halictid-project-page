@@ -4,7 +4,7 @@
 # Canalized plasticity in caste evolution
 
 *Companion page to the GEvol 2026 poster. Ayşegül Kara, Evolutionary Biology,
-LMU München. PI: Sonja Grath. Last updated 23 September 2026.*
+LMU München. PI: Sonja Grath. Last updated 25 September 2026.*
 
 This page documents a single-species case study: a test, in the sweat bee
 *Lasioglossum malachurum*, of whether caste regulation carries the signatures a
