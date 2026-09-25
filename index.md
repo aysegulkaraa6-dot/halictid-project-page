@@ -6,8 +6,14 @@
 *Companion page to the GEvol 2026 poster. Ayşegül Kara, Evolutionary Biology,
 LMU München. PI: Sonja Grath. Last updated 23 September 2026.*
 
-> **Lead paragraph, written last.** Two or three sentences: what the project
-> asks, what the two tests found, where it stands.
+This page documents a single-species case study: a test, in the sweat bee
+*Lasioglossum malachurum*, of whether caste regulation carries the signatures a
+plasticity-first account of caste origins predicts. Two tests were run and
+neither supported the prediction. One returned a well-powered null, the other
+reversed. What they established instead is that the gene definition both depend
+on, differential expression between queens and workers, selects on effect size
+rather than on mechanism, which bounds what any adult-stage test of this kind can
+show. The pipeline built along the way is what the five-species comparison needs.
 
 **Contents**
 
@@ -480,12 +486,59 @@ WP3, and its processing status is tracked in the collaborators' wet-lab table.
 
 ## Where this goes next
 
-> The three open questions plus the analyses now running. For each: what it
-> would establish, what data it needs, what would count as a negative result.
+**Replace the proxy.** Sequence larvae during the commitment window, rather than
+adults after it. This is the only route to genes that respond to the caste cue
+instead of genes that differ between finished castes, and it is what would make
+the canalization prediction testable at all. Larvae and pupae were collected this
+season. A negative result would be no detectable difference in either variance
+or the distribution of intermediates between cue conditions, which would count
+against the framing rather than against the instrument.
+
+**Build the baseline.** Canalization is comparative, and one obligately eusocial
+species cannot supply the comparison. The five-species set spans a gain, a
+reversion and a socially polymorphic lineage; *H. quadricinctus* adults are
+already collected. A negative result would be regulatory architecture that does
+not track social state across the tree.
+
+**Improve the predictions.** Cross-order transfer from flies is the weakest link
+in Test 1. Conserved non-coding elements across the 17 available halictid
+assemblies, and empirical chromatin data, are both stronger enhancer proxies
+because conservation and occupancy imply function more directly than sequence
+similarity does.
+
+**Close the open check.** GC content and repeat proximity as covariates in the
+existing model, to see whether the brain depletion survives. Hours of work, and
+it decides whether a composition-matched null is worth building.
+
+**Report the training-set defect** to the tool's authors. It is fixable, they
+would want to know, and raising it before publication is both fairer and
+strategically better.
 
 ## Questions for the committee
 
-> Written as questions, not a summary.
+**Open scientific questions.**
+
+- If caste-biased expression is not a clean pointer at caste regulation, what is,
+  in a species with no functional data?
+- If the brain depletion survives a composition-matched null, what would explain
+  caste regulation being *less* redundant rather than more?
+- Is the expression-variance reversal only a property of strong differential
+  expression, or would it say something if measured during the commitment window
+  rather than in adults?
+- Does the comparative arm carry the canalization question on its own, or does it
+  need a facultative species with experimentally manipulated cues?
+
+**Decisions needed.**
+
+- **Larval and pupal RNA-seq.** The material was collected this season but is
+  earmarked for WP3. Can it be sequenced or shared for the regulatory question,
+  and at what priority? This is the single change that would most improve what
+  these tests can measure.
+- **The composition-matched null.** It threatens the follow-up result but not the
+  pre-specified one. Worth building, or is the covariate check enough?
+- **Is the case study finished?** Further tuning of sequence-based prediction
+  looks low-yield. The alternative is to treat WP1's methodological work as
+  complete and move to the comparative arm and to empirical chromatin data.
 
 ## Methods in full
 
@@ -620,8 +673,52 @@ defect has been written up to be reported to the tool's authors.
 
 ## References
 
-> Everything cited anywhere on this page and on the poster, in one list.
-> Currently expected: West-Eberhard 2003; Jones and Robinson 2018;
-> Kantorovitz et al. 2009; Kazemian et al. 2011; Asma et al. 2024;
-> Rohlfs and Nielsen 2015; Sigalova et al. 2020; Lehner 2008; Lehner 2010;
-> Furusawa and Kaneko 2011; Perez-Carrasco et al. 2016; Masel et al. 2007.
+Asma H, Tieke E, Deem KD, et al. (2024). Regulatory genome annotation of 33
+insect species. *eLife* 13:e96738.
+<https://doi.org/10.7554/eLife.96738>
+
+Furusawa C, Kaneko K (2011). Proportionality between variances in gene
+expression induced by noise and mutation: consequence of evolutionary
+robustness. *BMC Evolutionary Biology* 11:27.
+<https://doi.org/10.1186/1471-2148-11-27>
+
+Jones BM, Robinson GE (2018). Genetic accommodation and the role of ancestral
+plasticity in the evolution of insect eusociality. *Journal of Experimental
+Biology* 221:jeb153163.
+<https://doi.org/10.1242/jeb.153163>
+
+Kantorovitz MR, Kazemian M, Kinston S, et al. (2009). Motif-blind, genome-wide
+discovery of cis-regulatory modules in *Drosophila* and mouse. *Developmental
+Cell* 17:568-579.
+<https://doi.org/10.1016/j.devcel.2009.09.002>
+
+Kazemian M, Zhu Q, Halfon MS, Sinha S (2011). Improved accuracy of supervised
+CRM discovery with interpolated Markov models and cross-species comparison.
+*Nucleic Acids Research* 39:9463-9472.
+<https://doi.org/10.1093/nar/gkr621>
+
+Lehner B (2008). Selection to minimise noise in living systems and its
+implications for the evolution of gene expression. *Molecular Systems Biology*
+4:170.
+<https://doi.org/10.1038/msb.2008.11>
+
+Lehner B (2010). Conflict between noise and plasticity in yeast. *PLoS Genetics*
+6:e1001185.
+<https://doi.org/10.1371/journal.pgen.1001185>
+
+Perez-Carrasco R, Guerrero P, Briscoe J, Page KM (2016). Intrinsic noise
+profoundly alters the dynamics and steady state of morphogen-controlled bistable
+genetic switches. *PLoS Computational Biology* 12:e1005154.
+<https://doi.org/10.1371/journal.pcbi.1005154>
+
+Sigalova OM, Shaeiri A, Forneris M, Furlong EE, Zaugg JB (2020). Predictive
+features of gene expression variation reveal mechanistic link with differential
+expression. *Molecular Systems Biology* 16:e9539.
+<https://doi.org/10.15252/msb.20209539>
+
+West-Eberhard MJ (2003). *Developmental Plasticity and Evolution*. Oxford
+University Press.
+
+Yang RS, Asma H, Halfon MS (2024). SCRMshaw: supervised cis-regulatory module
+prediction for insect genomes. *PLOS ONE* 19:e0311752.
+<https://doi.org/10.1371/journal.pone.0311752>
