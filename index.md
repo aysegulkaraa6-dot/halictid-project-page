@@ -526,17 +526,33 @@ survives. Report the training-set defect to the tool's authors.
 
 ## Questions for the committee
 
-**Open scientific questions.**
+**Open questions.** Each one bears on the three above.
 
-- If caste-biased expression is not a clean pointer at caste regulation, what is,
-  in a species with no functional data?
-- If the brain depletion survives a composition-matched null, what would explain
-  caste regulation being *less* redundant rather than more?
-- Is the expression-variance reversal only a property of strong differential
-  expression, or would it say something if measured during the commitment window
-  rather than in adults?
-- Does the comparative arm carry the canalization question on its own, or does it
-  need a facultative species with experimentally manipulated cues?
+- **What can stand in for caste-regulatory genes when there is no functional
+  data?** Both tests used queen versus worker differential expression, which
+  turned out to select on effect size rather than on mechanism. All three
+  questions above need a replacement and none is obvious.
+
+- **Does that problem follow us into the comparative arm?** Caste-biased genes
+  are noisier because they are strongly differentially expressed, which is true
+  on any axis and presumably in any species. A cross-species variance model built
+  on per-species caste-biased gene sets would inherit the same confound in every
+  lineage. Is there a gene set definable once across the tree, or does the model
+  need a different unit?
+
+- **What should the switch model have to deliver?** A qualitative signature to
+  look for, or a quantitative power curve saying how many individuals per lineage
+  are needed? And is it worth more before the comparative sequencing than after?
+
+- **What is cue-reading machinery, concretely?** The decay question needs genes
+  that read the environmental cue, and no halictid has a list of them. Is that
+  reachable by annotation and homology, or does it need the larval cue
+  manipulation first?
+
+- **If the depletion is real, what would explain it?** Caste-biased brain genes
+  being *less* redundant is not a weaker version of the proposal's prediction, it
+  is the reverse. Is there a mechanism worth taking seriously, or is the better
+  reading that the redundancy proxy does not measure what it was assumed to?
 
 **Decisions needed.**
 
@@ -544,11 +560,14 @@ survives. Report the training-set defect to the tool's authors.
   earmarked for WP3. Can it be sequenced or shared for the regulatory question,
   and at what priority? This is the single change that would most improve what
   these tests can measure.
-- **The composition-matched null.** It threatens the follow-up result but not the
-  pre-specified one. Worth building, or is the covariate check enough?
+
+- **Model first or data first.** Building the switch model is weeks of work and
+  would tell the comparative arm what signature to look for. Built afterwards, it
+  explains results instead of predicting them. Which order?
+
 - **Is the case study finished?** Further tuning of sequence-based prediction
-  looks low-yield. The alternative is to treat WP1's methodological work as
-  complete and move to the comparative arm and to empirical chromatin data.
+  looks low-yield. The alternative is to treat WP1's methodological work as done
+  and move to the comparative arm and to empirical chromatin data.
 
 ## Methods in full
 
