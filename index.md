@@ -565,6 +565,15 @@ survives. Report the training-set defect to the tool's authors.
   would tell the comparative arm what signature to look for. Built afterwards, it
   explains results instead of predicting them. Which order?
 
+- **One composition check, or one per genome?** The confound is a property of the
+  method rather than of *L. malachurum*, so it is present in all five genomes by
+  construction, and running the check five times would establish its magnitude
+  rather than its existence. But GC and repeat content differ between species, so
+  a confound that is stronger in some lineages than others would manufacture
+  exactly the kind of between-species difference the comparative arm is looking
+  for. Run it per genome as quality control, or build composition into the
+  comparative model as a covariate from the start?
+
 - **Is the case study finished?** Further tuning of sequence-based prediction
   looks low-yield. The alternative is to treat WP1's methodological work as done
   and move to the comparative arm and to empirical chromatin data.
