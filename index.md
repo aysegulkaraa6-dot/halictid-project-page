@@ -9,8 +9,9 @@ LMU München. PI: Sonja Grath. Last updated 23 September 2026.*
 This page documents a single-species case study: a test, in the sweat bee
 *Lasioglossum malachurum*, of whether caste regulation carries the signatures a
 plasticity-first account of caste origins predicts. Two tests were run and
-neither supported the prediction. One returned a well-powered null, the other
-reversed. What they established instead is that the gene definition both depend
+neither supported the prediction. Test 1 was null as specified, then came out
+significant in the opposite direction once the complete set of training data was
+used. Test 2 reversed outright. What they established instead is that the gene definition both depend
 on, differential expression between queens and workers, selects on effect size
 rather than on mechanism, which bounds what any adult-stage test of this kind can
 show. The pipeline built along the way is what the five-species comparison needs.
