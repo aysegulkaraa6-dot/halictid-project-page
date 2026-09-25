@@ -487,33 +487,42 @@ WP3, and its processing status is tracked in the collaborators' wet-lab table.
 
 ## Where this goes next
 
-**Replace the proxy.** Sequence larvae during the commitment window, rather than
-adults after it. This is the only route to genes that respond to the caste cue
-instead of genes that differ between finished castes, and it is what would make
-the canalization prediction testable at all. Larvae and pupae were collected this
-season. A negative result would be no detectable difference in either variance
-or the distribution of intermediates between cue conditions, which would count
-against the framing rather than against the instrument.
+Three open questions, the same three as on the poster.
 
-**Build the baseline.** Canalization is comparative, and one obligately eusocial
-species cannot supply the comparison. The five-species set spans a gain, a
-reversion and a socially polymorphic lineage; *H. quadricinctus* adults are
-already collected. A negative result would be regulatory architecture that does
-not track social state across the tree.
+**Does within-caste expression variance drop where eusociality became obligate?**
+Test 2 could not answer this, because one species supplies no baseline. Halictids
+carry repeated independent gains and losses, so lineages that never canalized are
+alive and collectable. The test is a model separating within- from
+between-species variance rather than a series of per-species comparisons (EVE;
+Rohlfs and Nielsen 2015). *H. quadricinctus* adults are already collected. The
+same arm also replaces cross-order transfer from flies with conserved non-coding
+elements across the 17 available halictid assemblies, a stronger enhancer proxy
+because conservation implies function more directly than sequence similarity
+does. A negative result would be within-species variance that does not track
+social state across the tree.
 
-**Improve the predictions.** Cross-order transfer from flies is the weakest link
-in Test 1. Conserved non-coding elements across the 17 available halictid
-assemblies, and empirical chromatin data, are both stronger enhancer proxies
-because conservation and occupancy imply function more directly than sequence
-similarity does.
+**What signature should canalization even leave?** This is the modelling
+question, and it is prior to the other two. Test 2 assumed canalization means
+lower variance at caste genes, and the literature says that assumption is not
+safe. Evolve a network that produces two stable states from one genome under an
+environmental cue, then watch variance at switch genes against background as the
+switch becomes reliable. Existing models carry one optimum and no environmental
+input, so this prediction has never been derived, only assumed. What comes out is
+a signature worth testing for and the sample size needed to detect it, which is
+also what would tell the comparative arm what to look for.
 
-**Close the open check.** GC content and repeat proximity as covariates in the
-existing model, to see whether the brain depletion survives. Hours of work, and
-it decides whether a composition-matched null is worth building.
+**Does the machinery that reads the cue decay once caste no longer needs it?**
+Plasticity is predicted to erode under environmental stasis (Masel et al. 2007).
+A reversion to solitary living removes any need to read the caste cue, so the
+cue-reading machinery should degrade, and halictid losses give real elapsed time
+to measure that against. This is the question the tree is best suited to and the
+one nobody has asked of it.
 
-**Report the training-set defect** to the tool's authors. It is fixable, they
-would want to know, and raising it before publication is both fairer and
-strategically better.
+**In the meantime.** Three things are immediate rather than conceptual. Sequence
+the larvae and pupae collected this season, which replaces the adult proxy with
+genes that respond to the cue. Add GC content and repeat proximity as covariates
+to the existing model, which decides in hours whether the brain depletion
+survives. Report the training-set defect to the tool's authors.
 
 ## Questions for the committee
 
@@ -707,10 +716,19 @@ Lehner B (2010). Conflict between noise and plasticity in yeast. *PLoS Genetics*
 6:e1001185.
 <https://doi.org/10.1371/journal.pgen.1001185>
 
+Masel J, King OD, Maughan H (2007). The loss of adaptive plasticity during long
+periods of environmental stasis. *The American Naturalist* 169(1).
+<https://doi.org/10.1086/510212>
+
 Perez-Carrasco R, Guerrero P, Briscoe J, Page KM (2016). Intrinsic noise
 profoundly alters the dynamics and steady state of morphogen-controlled bistable
 genetic switches. *PLoS Computational Biology* 12:e1005154.
 <https://doi.org/10.1371/journal.pcbi.1005154>
+
+Rohlfs RV, Nielsen R (2015). Phylogenetic ANOVA: the expression variance and
+evolution model for quantitative trait evolution. *Systematic Biology*
+64:695-708.
+<https://academic.oup.com/sysbio/article/64/5/695/1686874>
 
 Sigalova OM, Shaeiri A, Forneris M, Furlong EE, Zaugg JB (2020). Predictive
 features of gene expression variation reveal mechanistic link with differential
