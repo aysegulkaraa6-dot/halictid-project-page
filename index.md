@@ -21,7 +21,7 @@ show. The pipeline built along the way is what the five-species comparison needs
 [Project scope](#project-scope) ·
 [Background](#background) ·
 [The system](#the-system) ·
-[Proposal and scope of work](#what-the-proposal-asked-for-and-what-was-done) ·
+[Where these tests came from](#where-these-tests-came-from) ·
 [Test 1](#test-1-regulatory-redundancy) ·
 [Test 2](#test-2-expression-canalization) ·
 [Limits](#what-the-tests-could-and-could-not-measure) ·
@@ -102,8 +102,8 @@ than the background.
 underlying it should be too, so caste genes should vary less between individuals
 of one caste than other genes do.
 
-The project proposal reaches the redundancy prediction by a different route.
-There, extra elements are a hiding place, letting regulatory variation accumulate
+The accommodation framing the proposal does use reaches redundancy by a
+different route. There, extra elements are a hiding place, letting regulatory variation accumulate
 unexpressed until conditions expose it and selection can act (genetic
 accommodation). Same direction, different claim: one is about how caste regulation
 was assembled, the other about how reliably it now fires. Test 1 does not separate
@@ -143,30 +143,40 @@ is the primary contrast.
 **One control.** Brain versus fat body identity is tested the same way as caste.
 A pattern appearing there too is not caste-specific.
 
-## What the proposal asked for, and what was done
+## Where these tests came from
 
-The inherited proposal reasons in four steps. SCRMshaw predicts enhancer locations
-from sequence using *Drosophila* training data. Some loci carry several
-predictions, which is regulatory redundancy. Redundancy buffers regulatory
-variation, letting it accumulate unexpressed until conditions expose it. Therefore
-caste-biased genes, taken to be the genes whose regulation changed with the origin
-of eusociality, should carry more redundancy than other genes.
+The proposal frames the project through the ovarian ground plan hypothesis and
+genetic accommodation: plasticity in brood-care expression supplies the building
+blocks, and selection then acts on regulatory mechanisms once the worker and
+queen phenotypes are expressed. WP1's job is to predict enhancers and support
+them empirically. Its stated architecture question is enhancer *pleiotropy*,
+whether one element works in several contexts, and WP2's accommodation
+prediction is a rate claim, that enhancers of caste-biased genes should evolve
+faster than enhancers of other genes.
 
-The last step is the testable claim, and **Test 1 is that test**, run as the
-proposal frames it: caste-biased status against locus redundancy, separately for
-the three scoring methods and both tissues. Most of the effort in this leg went
-into building the machinery the test needs, which is why the prediction pipeline
-takes up as much space below as the result does. Building it surfaced two
-undocumented failure modes in the prediction pipeline and a systematic defect in
-a widely used public training-set resource; all three are in
+**Regulatory redundancy is not in the proposal.** Neither is shadow enhancers,
+nor buffering of cryptic variation. The hypothesis tested here is my own
+extension of the accommodation framing, and it reasons in four steps. SCRMshaw
+predicts enhancer locations from sequence using *Drosophila* training data. Some
+loci carry several predictions, which is regulatory redundancy. Redundancy would
+buffer regulatory variation, letting it accumulate unexpressed until conditions
+expose it. Caste-biased genes, if their regulation changed with the origin of
+eusociality, should then carry more redundancy than other genes.
+
+That last step is the testable claim and **Test 1 is that test**: caste-biased
+status against locus redundancy, separately for the three scoring methods and
+both tissues. It found the opposite direction. Most of the effort in this leg
+went into building the machinery the test needs, which is why the prediction
+pipeline takes up as much space below as the result does. Building it surfaced
+two undocumented failure modes in the prediction pipeline and a systematic defect
+in a widely used public training-set resource; all three are in
 [methods](#methods-in-full).
 
-**Test 2 is not in the proposal.** It follows from the same framing rather than
-from the proposal text. Buffering is a claim about variance, and within-caste
-expression variance is measurable directly in the 44 RNA-seq samples, with no
-enhancer predictions anywhere in the chain. It was added because it tests the same idea using only bee data.
-Test 1's predictions rest on carrying enhancer information from flies to bees,
-across two insect orders. Test 2 has no such step.
+**Test 2 came from the same idea.** Buffering is a claim about variance, and
+within-caste expression variance is measurable directly in the 44 RNA-seq
+samples, with no enhancer predictions anywhere in the chain. Test 1's predictions
+rest on carrying enhancer information from flies to bees, across two insect
+orders. Test 2 has no such step, which is why it was worth running alongside.
 
 Both tests had their hypothesis and their predicted direction written down before
 the analysis ran. That matters most for Test 2, where the prediction was lower
@@ -174,7 +184,7 @@ dispersion in caste-biased genes and the result came out the other way in every
 group.
 
 **Added afterwards.** These were decided once a result was in hand, and are
-follow-ups rather than tests of the proposal's claim:
+follow-ups rather than tests of the original claim:
 
 - Rerunning Test 1 on 74 and 86 training sets, after the first run excluded 12
   defective ones. The brain depletion appears here.
@@ -262,8 +272,8 @@ the opposite of what a masking explanation needs. Matching on locus length and
 prediction count changes nothing. Simulation gives 69 to 99.8% power at OR 1.5
 and 98 to 100% at OR 2.0; below about OR 1.2 power is limited, 20 to 59%.
 
-A well-powered null, then, against any effect worth caring about. The proposal
-predicted enrichment.
+A well-powered null, then, against any effect worth caring about, and the
+prediction was enrichment.
 
 ### Result on 74 and 86 training sets
 
@@ -550,8 +560,8 @@ survives. Report the training-set defect to the tool's authors.
   manipulation first?
 
 - **If the depletion is real, what would explain it?** Caste-biased brain genes
-  being *less* redundant is not a weaker version of the proposal's prediction, it
-  is the reverse. Is there a mechanism worth taking seriously, or is the better
+  being *less* redundant is not a weaker version of the prediction, it is the
+  reverse. Is there a mechanism worth taking seriously, or is the better
   reading that the redundancy proxy does not measure what it was assumed to?
 
 **Decisions needed.**
