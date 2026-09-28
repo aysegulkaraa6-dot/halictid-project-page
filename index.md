@@ -508,12 +508,17 @@ elements for the solitary-to-social switch (1.4).
 The first half of 1.1 is what this page documents: predictions for
 *L. malachurum* exist, the pipeline is validated, and the transferability work
 bounds what those predictions support. The second half, empirical support, has
-not started, because the phase I chromatin accessibility data expected by
-November 2025 does not exist yet.
+not started. Its stated input was chromatin accessibility from phase I, and that
+data does not exist: ATAC-seq was attempted and did not work, and CUT&Tag for
+H3K4me1 and H3K27ac is the replacement. CUT&Tag is Objective 1.3, phase II wet
+lab, not yet generated.
 
-That blocks more than 1.1. Pleiotropy is a claim about where an element is used,
-so Objective 1.2 needs the accessibility layer rather than SCRMshaw's training
-labels alone, and it is therefore not startable either. What can be done now is
+So 1.1's empirical half no longer precedes 1.3, it depends on it, and the work
+package has reordered itself. That blocks 1.2 as well: pleiotropy is a claim
+about where an element is used, so it needs the empirical layer rather than
+SCRMshaw's training labels alone. The substitution is not a downgrade for this
+purpose, since active-enhancer marks in two tissues are tighter evidence of
+deployment than open chromatin, but it does put 1.2 behind 1.3. What can be done now is
 narrower: ask whether the training-set labels carry any information about
 context breadth, which decides in advance whether they will be a useful prior
 once the accessibility data arrives. Given that unrelated training sets already
@@ -604,10 +609,20 @@ survives. Report the training-set defect to the tool's authors.
   and at what priority? This is the single change that would most improve what
   these tests can measure.
 
-- **Phase I ATAC-seq.** It was expected by November 2025 and does not exist.
-  Objectives 1.1 and 1.2 are both waiting on it, so a funded work package is
-  blocked on data that is not mine to generate. When is it coming, and is there
-  an interim version worth working against?
+- **The empirical layer for WP1.** Objective 1.1 specifies integrating
+  accessibility data generated in phase I. ATAC-seq was attempted, did not work,
+  and CUT&Tag replaced it, so that input will not arrive. CUT&Tag is Objective
+  1.3 and is not generated yet, which means 1.1's empirical half and 1.2 both now
+  sit behind 1.3 rather than in front of it. Is that reordering accepted, and
+  what is the CUT&Tag timeline?
+
+- **Simulation during the gap.** Build the analysis chain against simulated data
+  now: calibrate the false positive rate, and produce a power curve for the
+  effect sizes worth caring about at the planned replicate number. It says
+  nothing about biology, and its realism depends on borrowing noise structure
+  from a real dataset in a related insect rather than inventing it. The reason to
+  decide now rather than later is that the CUT&Tag design may still be
+  changeable, and a power curve is only useful while it is.
 
 - **Model first or data first.** Building the switch model is weeks of work and
   would tell the comparative arm what signature to look for. Built afterwards, it
