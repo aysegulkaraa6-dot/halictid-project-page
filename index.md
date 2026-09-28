@@ -25,6 +25,7 @@ show. The pipeline built along the way is what the five-species comparison needs
 [Test 1](#test-1-regulatory-redundancy) ·
 [Test 2](#test-2-expression-canalization) ·
 [Limits](#what-the-tests-could-and-could-not-measure) ·
+[WP1](#where-this-sits-in-wp1) ·
 [Next](#where-this-goes-next) ·
 [Questions](#questions-for-the-committee) ·
 [Methods](#methods-in-full) ·
@@ -494,6 +495,31 @@ season, along with adults of *H. quadricinctus*. There is no larval RNA-seq from
 phase one, which covered adult social phenotypes only, so the stage limitation
 is not addressable with data in hand. The material exists but is earmarked for
 WP3, and its processing status is tracked in the collaborators' wet-lab table.
+
+## Where this sits in WP1
+
+Work package 1 has four objectives. Predict enhancers and support them
+empirically with chromatin accessibility, methylation and histone data (1.1).
+Assess enhancer **pleiotropy**, whether one element serves several contexts, and
+test whether pleiotropic elements are structurally distinct (1.2). Assess
+epigenetic mechanisms (1.3). Integrate all of it into candidate regulatory
+elements for the solitary-to-social switch (1.4).
+
+The first half of 1.1 is what this page documents: predictions for
+*L. malachurum* exist, the pipeline is validated, and the transferability work
+bounds what those predictions support. The second half, empirical support, has
+not started. Objectives 1.2 to 1.4 have not started, though 1.2 needs only the
+predictions already in hand plus the phase I accessibility data, and a first
+pass on it is now specified.
+
+The two tests on this page are not WP1 objectives. They came out of the
+buffering idea, they drove the prediction pipeline to a state worth trusting,
+and their most transferable result is methodological: caste-biased expression
+selects on effect size rather than on mechanism. That bears directly on WP2,
+whose prediction is that enhancers of caste-biased genes evolve faster than
+enhancers of other genes. If strongly differentially expressed genes differ
+systematically on any axis, WP2 needs a tissue-biased negative control to
+separate sociality from differential expression as such.
 
 ## Where this goes next
 
