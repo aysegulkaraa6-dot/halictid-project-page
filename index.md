@@ -508,9 +508,16 @@ elements for the solitary-to-social switch (1.4).
 The first half of 1.1 is what this page documents: predictions for
 *L. malachurum* exist, the pipeline is validated, and the transferability work
 bounds what those predictions support. The second half, empirical support, has
-not started. Objectives 1.2 to 1.4 have not started, though 1.2 needs only the
-predictions already in hand plus the phase I accessibility data, and a first
-pass on it is now specified.
+not started, because the phase I chromatin accessibility data expected by
+November 2025 does not exist yet.
+
+That blocks more than 1.1. Pleiotropy is a claim about where an element is used,
+so Objective 1.2 needs the accessibility layer rather than SCRMshaw's training
+labels alone, and it is therefore not startable either. What can be done now is
+narrower: ask whether the training-set labels carry any information about
+context breadth, which decides in advance whether they will be a useful prior
+once the accessibility data arrives. Given that unrelated training sets already
+share 50 to 80 percent of their predicted genes, the expected answer is no.
 
 The two tests on this page are not WP1 objectives. They came out of the
 buffering idea, they drove the prediction pipeline to a state worth trusting,
@@ -596,6 +603,11 @@ survives. Report the training-set defect to the tool's authors.
   earmarked for WP3. Can it be sequenced or shared for the regulatory question,
   and at what priority? This is the single change that would most improve what
   these tests can measure.
+
+- **Phase I ATAC-seq.** It was expected by November 2025 and does not exist.
+  Objectives 1.1 and 1.2 are both waiting on it, so a funded work package is
+  blocked on data that is not mine to generate. When is it coming, and is there
+  an interim version worth working against?
 
 - **Model first or data first.** Building the switch model is weeks of work and
   would tell the comparative arm what signature to look for. Built afterwards, it
