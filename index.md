@@ -441,6 +441,14 @@ stochastically, so responsiveness and noise are coupled rather than separately
 optimisable (Lehner 2010, with the general selection argument in Lehner 2008). A
 gene that must respond to a cue cannot also be quiet.
 
+**Buffered does not mean quieter.** The same survey finds distal regulatory
+elements associated with *high* expression variance and active promoter marks
+with low variance (Sigalova et al. 2020; Wolf et al. 2023). That undercuts the
+step joining the two tests here, which treated redundant architecture and tight
+expression as two traces of one thing. It does not change either result, since
+caste loci came out *less* redundant rather than more, but it does mean the two
+predictions were never as linked as the framing assumed.
+
 **Theory predicts the same.** In evolving network models, genetic and
 noise-driven variance are proportional, so the genes most able to respond are the
 most variable (Furusawa and Kaneko 2011). In bistable switches driven by a
