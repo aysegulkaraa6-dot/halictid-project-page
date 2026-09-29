@@ -292,6 +292,14 @@ test was rerun on wider universes. Brain, `retained74`:
 Fat body is null under every method. The pattern strengthens in `all86` (IMM
 0.655, p = 0.0004) and appears in the 38 new sets alone (IMM 0.635, p = 0.0036).
 
+**The 12 defective sets were checked, not assumed away.** `retained74` excludes
+them and `all86` includes them, and the depletion is present in both, so it is
+not an artefact of the defective background models. The one place they do show is
+the method comparison: the single pairwise difference that reaches significance,
+IMM against HexMCD, appears only in `all86`, and the characterisation found that
+9 of the 12 inflate IMM's peak count into HexMCD-like territory. That difference
+is read as the same artefact rather than as real disagreement between methods.
+
 The direction is depletion: caste-biased brain genes are *less* likely to sit at
 redundant loci, the opposite of the prediction. Two earlier findings point the
 same way, the queen-associated WGCNA modules being less redundant and the
