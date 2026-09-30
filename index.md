@@ -158,7 +158,7 @@ faster than enhancers of other genes.
 **Regulatory redundancy is not in the proposal.** Neither is shadow enhancers,
 nor buffering of cryptic variation. The hypothesis tested here is my own
 extension of the accommodation framing, and it reasons in four steps. SCRMshaw
-predicts enhancer locations from sequence using *Drosophila* training data. Some
+predicts cis-regulatory elements from sequence using *Drosophila* training data. Some
 loci carry several predictions, which is regulatory redundancy. Redundancy would
 buffer regulatory variation, letting it accumulate unexpressed until conditions
 expose it. Caste-biased genes, if their regulation changed with the origin of
@@ -175,8 +175,8 @@ in a widely used public training-set resource; all three are in
 
 **Test 2 came from the same idea.** Buffering is a claim about variance, and
 within-caste expression variance is measurable directly in the 44 RNA-seq
-samples, with no enhancer predictions anywhere in the chain. Test 1's predictions
-rest on carrying enhancer information from flies to bees, across two insect
+samples, with no regulatory-element predictions anywhere in the chain. Test 1's predictions
+rest on carrying regulatory information from flies to bees, across two insect
 orders. Test 2 has no such step, which is why it was worth running alongside.
 
 Both tests had their hypothesis and their predicted direction written down before
@@ -209,13 +209,13 @@ fifth-order chain scoring hexamer likelihood ratios; **PAC**, word
 overrepresentation against a Poisson expectation. They are run together because
 they fail differently, not because they are independent.
 
-What comes out is enhancer-like sequence. Not demonstrated function, not
-validated in this species, and tied to a gene by proximity alone.
+What comes out is cis-regulatory-element-like sequence. Not demonstrated function, not
+validated in this species, and tied to a gene by proximity alone. A prediction also cannot be traced back to a single *Drosophila* element, so enhancers and silencers cannot be told apart afterwards.
 
 ### From windows to predictions
 
 A single pass over the genome fixes one arbitrary window framing, and a real
-enhancer straddling a boundary scores poorly in both halves. So the scan is
+regulatory element straddling a boundary scores poorly in both halves. So the scan is
 repeated 25 times at 10 bp offsets, 500 bp windows at a 250 bp slide, every
 instance scored by all three methods. Windows more than 5% ambiguous sequence
 are dropped.
@@ -343,7 +343,7 @@ the dataset's real effect size.
 ## Test 2. Expression canalization
 
 Test 2 was meant to test the canalization idea on data that does not depend on
-enhancer prediction. It ended up testing something else: the caste-biased gene
+regulatory-element prediction. It ended up testing something else: the caste-biased gene
 definition that both tests rely on.
 
 ### Prediction and design
@@ -495,13 +495,13 @@ before, or than somewhere else. One obligately eusocial species supplies no
 comparison, so this dataset cannot in principle show an increase in reliability.
 That is what the five-species arm is for.
 
-**Redundancy is not functional redundancy.** SCRMshaw predicts enhancer-like
-sequence. Several predictions at a locus is not several working enhancers, and
+**Redundancy is not functional redundancy.** SCRMshaw predicts cis-regulatory-element-like
+sequence. Several predictions at a locus is not several working regulatory elements, and
 nothing here tests whether losing one is buffered by another.
 
 **One open check.** The permutation null places shuffled intervals anywhere
 outside masked sequence, without matching sequence composition, so "redundant"
-is partly a proxy for "composition looks enhancer-like". For the pre-specified
+is partly a proxy for "composition looks like a training-set element". For the pre-specified
 null this only attenuates the estimate. For the depletion result it is a live
 alternative explanation. The cheapest test is GC content and repeat proximity as
 covariates in the existing model.
@@ -732,7 +732,7 @@ fixed it.
 sets have background to positive ratios of about 0.097, against roughly 1.0 for
 every other set. Their background sequences are an order of magnitude too few,
 which leaves the background model over-permissive, so more of the genome scores
-as enhancer-like. These are the `mapping1.` and `mapping2.` prefix-named sets;
+as regulatory-element-like. These are the `mapping1.` and `mapping2.` prefix-named sets;
 the similarly named suffix sets, such as `blastoderm.mapping1`, are normal. What
 the prefix means is documented nowhere, in the resource, its generation
 workflow, or the papers that use it.
